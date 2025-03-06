@@ -1,0 +1,23 @@
+.sectionProducts {
+  width: clamp(300px, 83vw, 1400px);
+  box-shadow: 1px 1px 10px #333;
+}
+
+.sectionHeader{
+  background-color: var(--gray-blue);
+  padding: 5px;
+  padding-left: 20px;
+}
+
+.sectionTitle {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}

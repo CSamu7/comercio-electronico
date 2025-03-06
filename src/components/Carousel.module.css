@@ -1,0 +1,27 @@
+.carousel {
+  position: relative;
+}
+
+.carouselImg {
+  width: clamp(300px, 83vw, 1400px);
+  height: 400px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+}
+
+.arrow:first-child {
+  left: 2%;
+}
+
+.arrow:last-child {
+  right: 2%
+}
+
+@media (max-width: 720px) {
+  .carousel {
+    display: none;
+  }
+}
