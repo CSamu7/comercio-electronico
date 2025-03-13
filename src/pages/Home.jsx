@@ -1,19 +1,23 @@
 import Carousel from "../components/Carousel";
+import Footer from "../components/Footer";
 import Header from "../components/header/Header";
 import SectionProducts from "../components/SectionProducts";
+import useWindowSize from "../hooks/useWindowSize";
 import styles from "./Home.module.css";
 
 export default function Home() {
+  const [width, height] = useWindowSize();
+
   return (
     <>
       <Header></Header>
       <main>
         <article className={styles.aboutUs}>
           <div className={styles.aboutUsMain}>
-            <h2 className={styles.aboutUsTitle}>Astroshop</h2>
+            <h2 className={styles.aboutUsTitle}>Infinite Sky</h2>
             <h3>&quot;El cosmo en tus manos&quot;</h3>
             <p>
-              AstroShop es una tienda en línea especializada en la venta de
+              Infinite Sky es una tienda en línea especializada en la venta de
               telescopios, accesorios y material astronómico de alta calidad.
               Ofrecemos productos para aficionados y profesionales.
             </p>
@@ -34,15 +38,19 @@ export default function Home() {
           </div>
         </article>
 
-        <Carousel
-          images={
-            "https://somoskudasai.com/wp-content/uploads/2021/11/portada_jojos-bizarre-adventure-19.jpg"
-          }
-        ></Carousel>
-        <SectionProducts></SectionProducts>
-        <SectionProducts></SectionProducts>
-        <SectionProducts></SectionProducts>
+        {width > 900 && (
+          <Carousel
+            images={
+              "https://somoskudasai.com/wp-content/uploads/2021/11/portada_jojos-bizarre-adventure-19.jpg"
+            }
+          ></Carousel>
+        )}
+
+        <SectionProducts title="Telescopios"></SectionProducts>
+        <SectionProducts title="Binoculares"></SectionProducts>
+        <SectionProducts title="Filtros"></SectionProducts>
       </main>
+      <Footer></Footer>
     </>
   );
 }

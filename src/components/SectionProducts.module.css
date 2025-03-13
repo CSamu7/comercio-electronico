@@ -11,13 +11,29 @@
 
 .sectionTitle {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
 }
 
 .products {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 10px;
-  gap: 10px;
+  padding: 20px;
+  gap: clamp(10px, 1.1vw, 20px)
+}
+
+.btnMoreProducts {
+  background-color: var(--light-blue);
+  padding: 15px;
+  color: var(--white);
+  border-radius: 10px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+@media (min-width: 720px) {
+  .products {
+    justify-content: start;
+  }
 }

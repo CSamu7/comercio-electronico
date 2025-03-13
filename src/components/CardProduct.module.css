@@ -16,7 +16,7 @@
 .productName {
   position: relative;
   display: -webkit-box;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -26,6 +26,5 @@
 }
 
 .productPrice {
-  font-size: 1.1rem;
-  margin-top: auto;
+  font-size: 1.2rem;
 }

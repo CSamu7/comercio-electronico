@@ -1,8 +1,6 @@
 import styles from "./Carousel.module.css";
 
 export default function Carousel({ images = [] }) {
-  console.log(images);
-
   return (
     <div className={styles.carousel}>
       <svg
@@ -16,7 +14,7 @@ export default function Carousel({ images = [] }) {
         <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
       </svg>
       <img
-        src="https://somoskudasai.com/wp-content/uploads/2021/11/portada_jojos-bizarre-adventure-19.jpg"
+        src="https://i.blogs.es/0c69af/astrology-astronomy-constellation-2034892/1366_2000.jpg"
         className={styles.carouselImg}
       ></img>
       <svg

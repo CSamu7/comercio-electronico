@@ -4,7 +4,7 @@
 
 .carouselImg {
   width: clamp(300px, 83vw, 1400px);
-  height: 400px;
+  height: 500px;
 }
 
 .arrow {
@@ -20,8 +20,3 @@
   right: 2%
 }
 
-@media (max-width: 720px) {
-  .carousel {
-    display: none;
-  }
-}

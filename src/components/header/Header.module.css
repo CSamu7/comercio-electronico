@@ -7,6 +7,11 @@
   padding: 15px;
 }
 
+.headerLogo {
+  width: 80px;
+  height: 80px;
+}
+
 .headerUser {
   display: flex;
   gap: 20px;
@@ -18,20 +23,3 @@
   }
 }
 
-@media (max-width: 720px) {
-  .btnProfile{
-    display: none;
-  }
-}
-
-@media (max-width: 720px) {
-  .headerUser{
-    display: none;
-  }
-}
-
-@media (min-width: 720px){
-  .btnMenuMobile{
-    display: none;
-  }
-}
