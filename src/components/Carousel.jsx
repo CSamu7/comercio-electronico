@@ -1,32 +1,64 @@
+import { useEffect, useState } from "react";
 import styles from "./Carousel.module.css";
 
-export default function Carousel({ images = [] }) {
+export default function Carousel({ imgs = [] }) {
+  const [activeImg, setActiveImg] = useState(0);
+
+  useEffect(() => {
+    window.interval = setInterval(onNextImage, 10000);
+
+    return () => clearInterval(window.interval);
+  }, []);
+
+  const onNextImage = () => {
+    setActiveImg((activeImg) => {
+      if (activeImg < imgs.length - 1) {
+        return activeImg + 1;
+      } else {
+        return 0;
+      }
+    });
+  };
+
+  const onPrevImage = () => {
+    setActiveImg((activeImg) => {
+      if (activeImg > 0) {
+        return activeImg - 1;
+      } else {
+        return imgs.length - 1;
+      }
+    });
+  };
+
+  const imgsElement = imgs.map((img, index) => {
+    return (
+      <img
+        src={img}
+        key={index}
+        className={`${styles.carouselImg} ${
+          index == activeImg && styles.carouselImgActive
+        }`}
+      ></img>
+    );
+  });
+
   return (
     <div className={styles.carousel}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="48px"
-        viewBox="0 -960 960 960"
-        width="48px"
-        fill="#e8eaed"
-        className={styles.arrow}
-      >
-        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-      </svg>
-      <img
-        src="https://i.blogs.es/0c69af/astrology-astronomy-constellation-2034892/1366_2000.jpg"
-        className={styles.carouselImg}
-      ></img>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="48px"
-        viewBox="0 -960 960 960"
-        width="48px"
-        fill="#e8eaed"
-        className={`${styles.arrow} ${styles.arrowRight}`}
-      >
-        <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-      </svg>
+      <button onClick={onPrevImage} className={styles.btnArrow}>
+        <img
+          src="arrow_left.png"
+          alt="arrow-left"
+          className={styles.arrowImg}
+        ></img>
+      </button>
+      {imgsElement}
+      <button onClick={onNextImage} className={styles.btnArrow}>
+        <img
+          src="arrow_right.png"
+          alt="arrow-right"
+          className={styles.arrowImg}
+        ></img>
+      </button>
     </div>
   );
 }

@@ -8,6 +8,11 @@ import styles from "./Home.module.css";
 export default function Home() {
   const [width, height] = useWindowSize();
 
+  const IMGS = [
+    "https://concepto.de/wp-content/uploads/2019/12/telescopio-e1576107221750.jpg",
+    "https://i.blogs.es/0c69af/astrology-astronomy-constellation-2034892/1366_2000.jpg",
+  ];
+
   return (
     <>
       <Header></Header>
@@ -38,13 +43,7 @@ export default function Home() {
           </div>
         </article>
 
-        {width > 900 && (
-          <Carousel
-            images={
-              "https://somoskudasai.com/wp-content/uploads/2021/11/portada_jojos-bizarre-adventure-19.jpg"
-            }
-          ></Carousel>
-        )}
+        {width > 900 && <Carousel imgs={IMGS}></Carousel>}
 
         <SectionProducts title="Telescopios"></SectionProducts>
         <SectionProducts title="Binoculares"></SectionProducts>

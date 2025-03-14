@@ -3,20 +3,35 @@
 }
 
 .carouselImg {
+  display: none;
   width: clamp(300px, 83vw, 1400px);
   height: 500px;
 }
 
-.arrow {
-  position: absolute;
-  top: 50%;
+.carouselImgActive {
+  display: block;
 }
 
-.arrow:first-child {
+.btnArrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+
+.btnArrow:hover{
+  transform: scale(1.1);
+}
+
+.btnArrow:first-child {
   left: 2%;
 }
 
-.arrow:last-child {
+.btnArrow:last-child {
   right: 2%
 }
 
+.arrowImg {
+  width: 48px;
+}
