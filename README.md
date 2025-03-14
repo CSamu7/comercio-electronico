@@ -1,8 +1,7 @@
-# React + Vite
+# Instalación
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Tener Node 22.14.0
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Entrar en la carpeta que contiene el proyecto
+- Escribir el comando npm -i para poder instalar las librerias
+- Si no da error la instalación, escribir npm run dev para poder generar el servidor de desarrollo.
