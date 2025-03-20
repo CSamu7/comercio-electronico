@@ -17,7 +17,7 @@ export default function NavMenu() {
 
     return (
       <li key={page}>
-        <a href={url}>{page}</a>
+        <a href={url === "inicio" ? "/" : url}>{page}</a>
       </li>
     );
   });

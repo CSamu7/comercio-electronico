@@ -1,15 +1,32 @@
-import NavMenu from "./NavMenu";
 import styles from "./Header.module.css";
+
+import NavMenu from "./NavMenu";
 import SearchBar from "./SearchBar";
 import ShoppingCart from "./ShoppingCart";
-import Button from "../Button";
+import LinkButton from "../buttons/LinkButton";
+
 import useWindowSize from "../../hooks/useWindowSize";
+import { useUser } from "../../hooks/useUser";
+import ActionButton from "../buttons/ActionButton";
+import MenuUser from "../MenuUser";
 
 export default function Header() {
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
+  const { user } = useUser();
 
+  const btnProfile = user ? (
+    <ActionButton variant="btnWithBg">
+      <></>
+    </ActionButton>
+  ) : (
+    <LinkButton variant="btnWithBg" url="/inicio-de-sesion">
+      Iniciar sesion
+    </LinkButton>
+  );
+
+  //TODO: Si no hay un usuario cargado, quitar el carrito de compras.
   return (
-    <>
+    <div className={styles.headerContainer}>
       <header className={styles.header}>
         <img className={styles.headerLogo} src="./logo.png"></img>
         <SearchBar></SearchBar>
@@ -28,12 +45,12 @@ export default function Header() {
 
         {width > 720 && (
           <div className={styles.headerUser}>
-            <ShoppingCart></ShoppingCart>
-            <Button className={styles.btnProfile}>Samuel Perez</Button>
+            {user && <ShoppingCart></ShoppingCart>}
+            {btnProfile}
           </div>
         )}
       </header>
       {width > 720 && <NavMenu></NavMenu>}
-    </>
+    </div>
   );
 }

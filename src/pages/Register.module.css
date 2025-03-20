@@ -1,0 +1,61 @@
+.mainPage {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.title {
+  text-transform: uppercase;
+  color: var(--dark-blue);
+  margin: 0;
+}
+
+.subtitle {
+  position: relative;
+  text-transform: uppercase;
+  color: var(--light-blue);
+}
+
+.subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  padding: 2px;
+  background-color: var(--gray-blue);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: clamp(400px, 90vw, 900px);
+}
+
+.formGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.formGroupPersonalData {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 20px 50px
+}
+
+.formGroupAccount {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btnSubmit {
+  align-self: center;
+  margin-top: 10px;
+}

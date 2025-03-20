@@ -1,0 +1,19 @@
+.selectContainer {
+  display: flex;
+  align-items: center;
+  width: 360px;
+  justify-content: space-between;
+}
+
+.select {
+  padding: 10px;
+  width: 200px;
+  font-size: .8em;
+}
+
+.label {
+  width: 115px;
+}
+
+.select > option {
+}

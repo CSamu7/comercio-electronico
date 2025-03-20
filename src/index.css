@@ -2,6 +2,7 @@
   --dark-blue: #335289;
   --gray-blue: #6983BF;
   --light-blue: #4990F9;
+   
   --white: #fff;
   --red: #FF4F4F;
   --light-green: #8ae485;
@@ -10,4 +11,10 @@
 
 body {
   font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  margin: 0px 20px;
+  font-size: 1.1rem;
 }

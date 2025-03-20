@@ -1,0 +1,19 @@
+.btnBase {
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btnWithBg {
+  padding: 15px;
+  color: white;
+  background-color: var(--light-blue);
+}
+
+.btnInline {
+  text-decoration:underline;
+  color: var(--light-blue);
+  font-weight: bold;
+}
+

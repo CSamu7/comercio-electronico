@@ -1,0 +1,56 @@
+.mainPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0px 0px 5px black;
+  width: clamp(350px, 30vw, 400px);
+}
+
+.formTitle {
+  background-color: var(--gray-blue);
+  color: white;
+  padding: 25px;
+  margin: 0;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.form > input {
+  padding: 10px;
+}
+
+.formErrorMsg {
+  background-color: var(--red);
+  color: white;
+  visibility: hidden;
+  padding: 15px;
+}
+
+.formErrorActive {
+  visibility: visible;
+}
+
+.formRegister {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btnLogIn {
+  align-self: center;
+}

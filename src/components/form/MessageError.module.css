@@ -1,0 +1,7 @@
+.msgError {
+  background-color: var(--red);
+  padding: 10px;
+  text-align: center;
+  color: var(--white);
+  width: 100%;
+}

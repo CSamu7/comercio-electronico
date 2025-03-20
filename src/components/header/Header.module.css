@@ -12,9 +12,24 @@
   height: 80px;
 }
 
+.btnProfile {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-blue);
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .headerUser {
   display: flex;
   gap: 20px;
+}
+
+.btnProfileLink {
+  text-decoration: none;
+  color: var(--white);
 }
 
 @media (min-width: 720px) {

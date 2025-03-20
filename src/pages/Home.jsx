@@ -1,12 +1,11 @@
 import Carousel from "../components/Carousel";
-import Footer from "../components/Footer";
-import Header from "../components/header/Header";
+import Layout from "../components/Layout";
 import SectionProducts from "../components/SectionProducts";
 import useWindowSize from "../hooks/useWindowSize";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
 
   const IMGS = [
     "https://concepto.de/wp-content/uploads/2019/12/telescopio-e1576107221750.jpg",
@@ -14,9 +13,8 @@ export default function Home() {
   ];
 
   return (
-    <>
-      <Header></Header>
-      <main>
+    <Layout>
+      <div className={styles.mainContent}>
         <article className={styles.aboutUs}>
           <div className={styles.aboutUsMain}>
             <h2 className={styles.aboutUsTitle}>Infinite Sky</h2>
@@ -48,8 +46,7 @@ export default function Home() {
         <SectionProducts title="Telescopios"></SectionProducts>
         <SectionProducts title="Binoculares"></SectionProducts>
         <SectionProducts title="Filtros"></SectionProducts>
-      </main>
-      <Footer></Footer>
-    </>
+      </div>
+    </Layout>
   );
 }
