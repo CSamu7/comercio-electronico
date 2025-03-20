@@ -7,9 +7,12 @@ import Layout from "../components/Layout";
 import useForm from "../hooks/useForm";
 import { useUser } from "../hooks/useUser";
 import styles from "./Register.module.css";
+import states from "../../estados.json";
+import towns from "../../estados-municipios.json";
 
 export default function Register() {
   const { addUser } = useUser();
+
   const { form, updateField, formError, setFormError, checkFields } = useForm({
     nombre: "",
     apellidoPaterno: "",
@@ -27,12 +30,13 @@ export default function Register() {
     e.preventDefault();
     setFormError("");
 
-    checkFields();
-
     if (!form.terminos) {
       setFormError("Debes aceptar los terminos y condiciones");
     }
   };
+
+  console.log(form.estado);
+  console.log("Ciudad de Mexico" === form.estado);
 
   return (
     <Layout>
@@ -40,7 +44,7 @@ export default function Register() {
         <h2 className={styles.title}>Crea tu cuenta</h2>
         <form className={styles.form} onSubmit={sendForm}>
           <h3 className={styles.subtitle}>Datos personales</h3>
-          <div className={styles.formGroupPersonalData}>
+          <div className={styles.formGroup}>
             <FormInput
               label="Nombre"
               handleUpdate={updateField}
@@ -59,8 +63,18 @@ export default function Register() {
               label="Apellido Materno"
             ></FormInput>
 
-            <Select label="Estado" handleUpdate={updateField}></Select>
-            <Select label="Municipio" handleUpdate={updateField}></Select>
+            <Select
+              label="Estado"
+              name="estado"
+              handleUpdate={updateField}
+              list={states}
+              onChange={updateField}
+            ></Select>
+            <Select
+              label="Municipio"
+              handleUpdate={updateField}
+              list={towns[form.estado]}
+            ></Select>
             <FormInput
               label="Calle"
               handleUpdate={updateField}
@@ -76,7 +90,7 @@ export default function Register() {
           </div>
 
           <h3 className={styles.subtitle}>Cuenta</h3>
-          <div className={styles.formGroupAccount}>
+          <div className={styles.formGroup}>
             <FormInput
               label="Correo"
               type="email"
@@ -107,7 +121,7 @@ export default function Register() {
               checked={form.terminos}
               type="checkbox"
             ></FormInput>
-            <MessageError>{formError}</MessageError>
+            <MessageError condition={formError}>{formError}</MessageError>
           </div>
 
           <ActionButton

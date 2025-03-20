@@ -1,5 +1,9 @@
 import styles from "./MessageError.module.css";
 
-export default function MessageError({ children }) {
-  return <p className={styles.msgError}>{children}</p>;
+export default function MessageError({ children, condition }) {
+  return (
+    <p className={`${styles.msgError} ${condition && styles.msgErrorActive}`}>
+      {children}
+    </p>
+  );
 }

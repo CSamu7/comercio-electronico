@@ -39,21 +39,9 @@
 .formGroup {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px 50px;
 }
 
-.formGroupPersonalData {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 20px 50px
-}
-
-.formGroupAccount {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 .btnSubmit {
   align-self: center;
