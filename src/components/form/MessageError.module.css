@@ -1,13 +1,14 @@
 .msgError {
-  background-color: var(--red);
-  padding: 10px;
-  text-align: center;
-  color: var(--white);
   width: 100%;
-  visibility: hidden;
   margin: 0;
+  font-size: .8em;
 }
 
-.msgErrorActive {
-  visibility: visible;
+.withBg {
+  color: var(--white);
+  background-color: var(--red);
+}
+
+.noBg {
+  color: var(--red);
 }

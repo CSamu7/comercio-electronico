@@ -52,5 +52,10 @@
 }
 
 .btnLogIn {
+  margin-top: auto;
   align-self: center;
+}
+
+.forgetPasswordLink {
+  margin-bottom: 100px;
 }

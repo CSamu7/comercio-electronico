@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import { authUser } from "../services/userService";
 
 const useUser = () => {
   const [user, setUser] = useState();
@@ -34,20 +35,10 @@ const useUser = () => {
     getAuthUser();
   }, []);
 
-  const getUser = async () => {
-    const request = await fetch("https://dummyjson.com/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: "emilys",
-        password: "emilyspass",
-        expiresInMins: 30, // optional, defaults to 60
-      }),
-    });
+  const getUser = async (user) => {
+    const token = await authUser(user);
 
-    const response = request.json();
-
-    return response;
+    return token;
   };
 
   const addUser = (user) => {};

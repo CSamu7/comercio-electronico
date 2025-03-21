@@ -1,0 +1,32 @@
+  # POST http://localhost/backend/user
+
+  # {
+  #   "email": "samuelpdg2003@gmail.com"
+  # }
+
+  POST http://localhost/backend/public/user/auth
+  content-type: application/json
+
+  {
+    "email": "samuelpdg2003@gmail.com",
+    "passw": "joseeschingon"
+  }
+  ###
+
+  # POST http://localhost/backend/public/user/auth
+  # content-type: application/json
+
+  # {
+  #   "email": "samuelpdg2003@gmail.com",
+  #   "passw": "sdadsa"
+  # }  
+  
+  ###
+
+  # POST http://localhost/backend/public/user/auth
+  # content-type: application/json
+
+  # {
+  #   "email": "jos333-@hotmail.com",
+  #   "passw": "xamppesmrda"
+  # }
