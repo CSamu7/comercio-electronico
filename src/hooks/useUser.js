@@ -19,8 +19,9 @@ const useUser = () => {
     getAuthUser();
   }, []);
 
-  const authUser = async (user) => {
-    const token = authUser(user);
+  const auth = async (user) => {
+    const { token } = authUser(user);
+
     return token;
   };
 
@@ -28,7 +29,7 @@ const useUser = () => {
 
   return {
     user,
-    authUser,
+    auth,
     addUser,
   };
 };

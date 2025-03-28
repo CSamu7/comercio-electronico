@@ -19,7 +19,7 @@ export default function Login() {
     setError,
   } = useForm();
 
-  const { getUser } = useUser();
+  const { auth } = useUser();
   const { addItem } = useLocalStorage();
 
   const onSubmitForm = async (data) => {
@@ -29,9 +29,9 @@ export default function Login() {
     };
 
     try {
-      const token = await getUser(user);
+      const token = await auth(user);
 
-      addItem("token", token.acccessToken);
+      addItem("token", token);
       navigate("/");
     } catch (error) {
       setError("service", {
@@ -77,9 +77,9 @@ export default function Login() {
               ¿Has olvidado tu contraseña?
             </LinkButton>
 
-            {errors.server && (
+            {errors.service && (
               <MessageError variant="withBg">
-                {errors.server.message}
+                {errors.service.message}
               </MessageError>
             )}
 

@@ -1,9 +1,9 @@
-const URL_BASE = "http://localhost/ComercioE/public/";
+const URL_BASE = "http://localhost/backend/public";
 
 const authUser = async (user) => {
-  const request = await fetch(`${URL_BASE}auth`, {
+  const request = await fetch(`${URL_BASE}/user/auth`, {
     method: "POST",
-    body: user,
+    body: JSON.stringify(user),
     headers: {
       "Content-Type": "application/json",
     },
@@ -13,25 +13,21 @@ const authUser = async (user) => {
 
   const response = await request.json();
 
-  console.log(response);
-
   return response;
 };
 
 const getUser = async (token) => {
-  try {
-    const request = await fetch(`${URL_BASE}user/auth`, {
-      headers: {
-        Authorization: "Bearer " + token, // Pass JWT via Authorization header
-      },
-    });
+  const request = await fetch(`${URL_BASE}/user`, {
+    headers: {
+      Authorization: "Bearer " + token, // Pass JWT via Authorization header
+    },
+  });
 
-    if (!request.ok) throw new Error("Usuario sin autorizacion");
+  if (!request.ok) throw new Error("Usuario sin autorizacion");
 
-    const response = await request.json();
+  const response = await request.json();
 
-    return response;
-  } catch (error) {}
+  return response;
 };
 
 export { authUser, getUser };

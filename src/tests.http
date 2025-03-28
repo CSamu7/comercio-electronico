@@ -4,19 +4,16 @@
   #   "email": "samuelpdg2003@gmail.com"
   # }
 
-  # POST http://localhost/ComercioE/public/user/auth
-  # content-type: application/json
+  POST http://localhost/backend/public/user/auth
+  content-type: application/json
 
-  # {
-  #   "email": "samuelpdg2003@gmail.com",
-  #   "passw": "joseeschingon"
-  # }
+  {
+    "email": "samuelpdg2003@gmail.com",
+    "passw": "joseeschingon"
+  }
 
-  GET http://localhost/ComercioE/public/user
-  Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhbXVlbHBkZzIwMDNAZ21haWwuY29tIiwiaWQiOjF9.dSTbK_Wcb4Mv5qmymHa_W3JAN5NFrwG5HskA1x7r8CI
-
-
-
+  # GET http://localhost/backend/public/user
+  # Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhbXVlbHBkZzIwMDNAZ21haWwuY29tIiwiaWQiOjF9.dSTbK_Wcb4Mv5qmymHa_W3JAN5NFrwG5HskA1x7r8CI
 
   # POST http://localhost/backend/public/user/auth
   # content-type: application/json
