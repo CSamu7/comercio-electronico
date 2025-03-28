@@ -17,10 +17,14 @@ const upperFirstLetter = (word) => {
   return String(letterUpper + word.slice(1).toLowerCase());
 };
 
-const capitalize = (word) => {
+const capitalize = (word, minChar) => {
   return word
     .split(" ")
     .map((word) => {
+      if (word.length <= minChar) {
+        return word.toLowerCase();
+      }
+
       return upperFirstLetter(word);
     })
     .join(" ");

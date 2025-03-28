@@ -4,34 +4,74 @@
     "name": "Sky Watcher Heritage 150 Telescopio Dobsonian de Mesa, Perfecto para Principiantes, fácil instalación, portátil y Divertido (S11710)",
     "shortname": "Sky Watcher Heritage 150 Telescopio Dobsonian de Mesa",
     "price": 7934,
-    "url_img": "https://m.media-amazon.com/images/I/61Vlgu5ZFbL._AC_SL1500_.jpg"
+    "url_img": "https://m.media-amazon.com/images/I/61Vlgu5ZFbL._AC_SL1500_.jpg",
+    "reviews": [
+      {
+        "id_user": 1,
+        "rating": 4,
+        "comment": ""
+      },
+      {
+        "id_user": 1,
+        "rating": 4,
+        "comment": ""
+      }
+    ],
+    "marca": "SkyWatcher"
   },
   {
     "id": 1,
-    "name": "SSky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm – Innovador diseño Plegable, fácil de Usar, Perfecto para Principiantes, Negro/Blanco (S11705)",
+    "name": "Sky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm – Innovador diseño Plegable, fácil de Usar, Perfecto para Principiantes, Negro/Blanco (S11705)",
     "shortname": "Sky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm ",
     "price": 6963,
-    "url_img": "https://m.media-amazon.com/images/I/51MGhhGtoiL._AC_SL1200_.jpg"
+    "url_img": "https://m.media-amazon.com/images/I/51MGhhGtoiL._AC_SL1200_.jpg",
+    "marca": "SkyWatcher",
+    "departamento": "Telescopio"
   },
   {
     "id": 2,
     "name": "Sky Watcher Heritage 150 Telescopio Dobsonian de Mesa, Perfecto para Principiantes, fácil instalación, portátil y Divertido (S11710)",
     "shortname": "Sky Watcher Heritage 150 Telescopio Dobsonian de Mesa",
     "price": 7934,
-    "url_img": "https://m.media-amazon.com/images/I/61Vlgu5ZFbL._AC_SL1500_.jpg"
+    "url_img": "https://m.media-amazon.com/images/I/61Vlgu5ZFbL._AC_SL1500_.jpg",
+    "marca": "SkyWatcher",
+    "departamento": "Telescopio"
+
   },
   {
     "id": 3,
-    "name": "SSky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm – Innovador diseño Plegable, fácil de Usar, Perfecto para Principiantes, Negro/Blanco (S11705)",
+    "name": "Sky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm – Innovador diseño Plegable, fácil de Usar, Perfecto para Principiantes, Negro/Blanco (S11705)",
     "shortname": "Sky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm ",
     "price": 6963,
-    "url_img": "https://m.media-amazon.com/images/I/51MGhhGtoiL._AC_SL1200_.jpg"
+    "url_img": "https://m.media-amazon.com/images/I/51MGhhGtoiL._AC_SL1200_.jpg",
+    "marca": "SkyWatcher",
+    "departamento": "Telescopio"
   },
   {
     "id": 4,
-    "name": "SSky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm – Innovador diseño Plegable, fácil de Usar, Perfecto para Principiantes, Negro/Blanco (S11705)",
+    "name": "Sky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm – Innovador diseño Plegable, fácil de Usar, Perfecto para Principiantes, Negro/Blanco (S11705)",
     "shortname": "Sky Watcher Heritage - Telescopio de 130 mm de Apertura Dobsonian de 12,7 cm ",
     "price": 6963,
-    "url_img": "https://m.media-amazon.com/images/I/51MGhhGtoiL._AC_SL1200_.jpg"
+    "url_img": "https://m.media-amazon.com/images/I/51MGhhGtoiL._AC_SL1200_.jpg",
+    "marca": "SkyWatcher",
+    "departamento": "Telescopio"
+  }, 
+  {
+    "id": 5,
+    "name": "Celestron - AstroMaster 130EQ Newtonian Telescope - Reflector Telescope for Beginners - Fully-Coated Glass Optics - Adjustable-Height Tripod - Bonus Astronomy Software Package",
+    "shortname": "Celestron - AstroMaster 130EQ Newtonian Telescope",
+    "price": 6717,
+    "url_img": "https://m.media-amazon.com/images/I/610Cm94VvML._AC_SL1500_.jpg",
+    "marca": "Celestron",
+    "departamento": "Telescopio"
+  }, 
+  {
+    "id": 6,
+    "name": "Celestron – SkyMaster 25x70 Binocular – Large Aperture Outdoor & Astronomy Binoculars – For Long Distance Tripod Viewing – Includes Tripod Adapter & Carrying Case – Multi-Coated Optics",
+    "shortname": "Celestron – SkyMaster 25x70 Binocular",
+    "price": 2346,
+    "url_img": "https://m.media-amazon.com/images/I/71QSEtDqsUL._AC_SL1500_.jpg",
+    "marca": "Celestron",
+    "departamento": "Binoculares"
   }
 ]

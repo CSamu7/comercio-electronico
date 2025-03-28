@@ -6,6 +6,7 @@ export default function ActionButton({
   onClick,
   type,
   className,
+  size,
   width = "200px",
 }) {
   return (
@@ -13,7 +14,7 @@ export default function ActionButton({
       style={{
         width: width,
       }}
-      className={`${className} ${styles["btnBase"]} ${styles[variant]}`}
+      className={`${styles["btnBase"]} ${styles[variant]} ${styles[size]} ${className}`}
       type={type}
       onClick={onClick}
     >

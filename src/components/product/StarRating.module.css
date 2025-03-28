@@ -1,0 +1,11 @@
+.starRating {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  align-self: flex-start;
+}
+
+.star {
+  width: 20px;
+}

@@ -1,4 +1,4 @@
-const URL_BASE = "http://localhost/backend/public/user/";
+const URL_BASE = "http://localhost/ComercioE/public/";
 
 const authUser = async (user) => {
   const request = await fetch(`${URL_BASE}auth`, {
@@ -18,4 +18,20 @@ const authUser = async (user) => {
   return response;
 };
 
-export { authUser };
+const getUser = async (token) => {
+  try {
+    const request = await fetch(`${URL_BASE}user/auth`, {
+      headers: {
+        Authorization: "Bearer " + token, // Pass JWT via Authorization header
+      },
+    });
+
+    if (!request.ok) throw new Error("Usuario sin autorizacion");
+
+    const response = await request.json();
+
+    return response;
+  } catch (error) {}
+};
+
+export { authUser, getUser };

@@ -1,23 +1,30 @@
 import ActionButton from "../components/buttons/ActionButton";
-import LinkButton from "../components/buttons/LinkButton";
 import FormInput from "../components/form/FormInput";
 import MessageError from "../components/form/MessageError";
 import Select from "../components/form/Select";
 import Layout from "../components/Layout";
+import { useLocations } from "../hooks/useLocations";
 import { useUser } from "../hooks/useUser";
 import styles from "./Register.module.css";
-import states from "../../estados.json";
-import towns from "../../estados-municipios.json";
 import { useForm } from "react-hook-form";
 
 export default function Register() {
-  const { addUser } = useUser();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const { getStates, getMunicipalities } = useLocations();
 
-  const { register, handleSubmit } = useForm();
+  const states = getStates();
+  const municipalities = getMunicipalities(watch("Estado"));
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    console.log(data);
   };
+
+  const errorsList = Object.entries(errors);
 
   return (
     <Layout>
@@ -38,12 +45,24 @@ export default function Register() {
               label="Apellido Materno"
             ></FormInput>
 
-            <Select label="Estado" list={states} register={register}></Select>
-            <Select label="Municipio" register={register}></Select>
+            <Select
+              label="Estado"
+              list={states}
+              register={register}
+              required
+            ></Select>
+            <Select
+              label="Municipio"
+              required
+              list={municipalities}
+              register={register}
+            ></Select>
             <FormInput label="Calle" register={register} required></FormInput>
             <FormInput
               label="Codigo Postal"
               width={100}
+              maxLength={5}
+              minLength={5}
               required
               register={register}
             ></FormInput>
@@ -64,12 +83,17 @@ export default function Register() {
               required
             ></FormInput>
             <FormInput
-              label="Terminos y condiciones"
+              label="Acepto terminos y condiciones"
               required
+              name="Terminos y condiciones"
               register={register}
               type="checkbox"
             ></FormInput>
-            {/* <MessageError condition={formError}>{formError}</MessageError> */}
+            {errorsList.length > 0 && (
+              <MessageError variant="withBg">
+                {errorsList[0][1].message}
+              </MessageError>
+            )}
           </div>
 
           <ActionButton

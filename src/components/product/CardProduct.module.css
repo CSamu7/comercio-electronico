@@ -1,30 +1,34 @@
 .cardProduct {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
-
-  width: clamp(115px, 15vw, 200px);
+  flex-basis: clamp(200px, 44vw, 210px);
 }
 
 .productImg {
-  width: clamp(60px, 15vw, 92px);
-  height: clamp(66px, 15vh, 100px);
+  width: clamp(100px, 15vw, 120px);
 }
 
 /*Sustituir webkit*/
 .productName {
   position: relative;
   display: -webkit-box;
-  font-size: 1.1rem;
+  font-size: 1.1em;
   font-weight: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-
 }
 
 .productPrice {
-  font-size: 1.2rem;
+  font-size: 1.3em;
+  color: var(--dark-blue);
+  font-weight: bold;
+}
+
+.productReviews {
+  margin: 0;
 }

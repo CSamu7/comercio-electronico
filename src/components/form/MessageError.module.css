@@ -1,12 +1,12 @@
 .msgError {
   width: 100%;
   margin: 0;
-  font-size: .8em;
 }
 
 .withBg {
   color: var(--white);
   background-color: var(--red);
+  padding: 15px;
 }
 
 .noBg {

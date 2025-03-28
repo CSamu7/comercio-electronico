@@ -1,0 +1,11 @@
+.label {
+  width: 135px;
+  min-width: max-content
+}
+
+.labelRequired::after {
+  content: "*";
+  position: absolute;
+  color: var(--red);
+  font-weight: bold;
+}

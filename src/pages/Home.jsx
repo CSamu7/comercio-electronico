@@ -1,6 +1,6 @@
 import Carousel from "../components/Carousel";
 import Layout from "../components/Layout";
-import SectionProducts from "../components/SectionProducts";
+import SectionProducts from "../components/product/SectionProducts";
 import useWindowSize from "../hooks/useWindowSize";
 import styles from "./Home.module.css";
 

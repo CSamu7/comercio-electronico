@@ -1,28 +1,13 @@
 .formDiv {
   display: flex;
   align-items: center;
-  gap: 15px;
   justify-content: space-between;
-  width: 360px;
 }
 
 .formInput {
   padding: 8px;
   font-size: .9em;
-  width: 60%;
-
-}
-
-.label {
-  width: 135px;
-  min-width: max-content
-}
-
-.formLabelRequired::after {
-  content: "*";
-  position: absolute;
-  color: var(--red);
-  font-weight: bold;
+  width: 200px;
 }
 
 .formInput[type="checkbox"] {

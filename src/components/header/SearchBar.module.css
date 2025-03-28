@@ -12,12 +12,8 @@
   border: 0;
 }
 
-.btnSearchBar {
-  background-color: var(--light-blue);
-  padding: 9px;
-  border-radius: 0px 10px 10px 0px;
-  border: 0;
-  cursor: pointer;
+.btnSearchBar{
+  padding: 0px;
 }
 
 .btnSearchBar:hover {

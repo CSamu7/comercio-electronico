@@ -9,7 +9,6 @@
 .title {
   text-transform: uppercase;
   color: var(--dark-blue);
-  margin: 0;
 }
 
 .subtitle {
@@ -32,16 +31,21 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 10px 0px 50px 0px;
 
-  width: clamp(400px, 90vw, 900px);
+  width: clamp(400px, 90vw, 800px);
 }
 
 .formGroup {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 20px 50px;
 }
 
+.formGroup > div {
+  width: 360px;
+}
 
 .btnSubmit {
   align-self: center;

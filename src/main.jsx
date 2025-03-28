@@ -6,7 +6,7 @@ import Home from "./pages/Home.jsx";
 import { StrictMode } from "react";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import Products from "./pages/Products.jsx";
+import PageProducts from "./pages/PageProducts.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,7 +15,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/inicio-de-sesion" element={<Login></Login>}></Route>
         <Route path="/registro" element={<Register></Register>}></Route>
-        <Route path="/productos" element={<Products></Products>}></Route>
+        <Route
+          path="/productos"
+          element={<PageProducts></PageProducts>}
+        ></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>
