@@ -3,11 +3,13 @@ import style from "./Login.module.css";
 import LinkButton from "../components/buttons/LinkButton";
 import ActionButton from "../components/buttons/ActionButton";
 import MessageError from "../components/form/MessageError";
+import Loader from "../components/Loader";
 
 import { useUser } from "../hooks/useUser";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export default function Login() {
   //TODO: Crear el hook de form.
@@ -17,19 +19,23 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
     setError,
+    clearErrors,
   } = useForm();
 
   const { auth } = useUser();
   const { addItem } = useLocalStorage();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = async (data) => {
+    setIsLoading(true);
+
     const user = {
       email: data.email,
       passw: data.password,
     };
 
     try {
-      const token = await auth(user);
+      const { token } = await auth(user);
 
       addItem("token", token);
       navigate("/");
@@ -37,6 +43,8 @@ export default function Login() {
       setError("service", {
         message: error.message,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -77,6 +85,8 @@ export default function Login() {
               ¿Has olvidado tu contraseña?
             </LinkButton>
 
+            {isLoading && <Loader className={style.loader}></Loader>}
+
             {errors.service && (
               <MessageError variant="withBg">
                 {errors.service.message}
@@ -88,6 +98,7 @@ export default function Login() {
               variant="btnWithBg"
               width="100%"
               type="submit"
+              onClick={() => clearErrors("service")}
             >
               Iniciar sesión
             </ActionButton>

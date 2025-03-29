@@ -4,7 +4,6 @@ import { authUser, getUser } from "../services/userService";
 
 const useUser = () => {
   const [user, setUser] = useState();
-  const [error, setError] = useState(false);
   const { getItem } = useLocalStorage();
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const useUser = () => {
   }, []);
 
   const auth = async (user) => {
-    const { token } = authUser(user);
+    const token = authUser(user);
 
     return token;
   };
