@@ -36,12 +36,11 @@ export default function Login() {
 
     try {
       const { token } = await auth(user);
-
       addItem("token", token);
       navigate("/");
     } catch (error) {
       setError("service", {
-        message: error.message,
+        message: error.msg,
       });
     } finally {
       setIsLoading(false);

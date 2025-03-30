@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { authUser, getUser } from "../services/userService";
+import { authUser, getUser, postUser } from "../services/userService";
 
 const useUser = () => {
   const [user, setUser] = useState();
-  const { getItem } = useLocalStorage();
+  const { getItem, removeItem } = useLocalStorage();
 
   useEffect(() => {
     const getAuthUser = async () => {
@@ -12,7 +12,9 @@ const useUser = () => {
 
       if (!token) return;
 
-      setUser(getUser());
+      const userData = await getUser(token);
+
+      setUser(userData[0]);
     };
 
     getAuthUser();
@@ -24,12 +26,28 @@ const useUser = () => {
     return token;
   };
 
-  const addUser = (user) => {};
+  const addUser = async (user) => {
+    const bodyUser = {
+      nombre: user["Nombre"],
+      apeP: user["Apellido Paterno"],
+      apeM: user["Apellido Materno"],
+      email: user["Correo"],
+      passw: user["Contraseña"],
+      direc: `${user["Calle"]}, ${user["Municipio"]}, ${user["Estado"]}`,
+    };
+
+    const msg = postUser(bodyUser);
+  };
+
+  const logout = () => {
+    removeItem("token");
+  };
 
   return {
     user,
     auth,
     addUser,
+    logout,
   };
 };
 

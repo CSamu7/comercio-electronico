@@ -16,12 +16,15 @@ export default function Register() {
     formState: { errors },
   } = useForm();
   const { getStates, getMunicipalities } = useLocations();
+  const { addUser } = useUser();
 
   const states = getStates();
   const municipalities = getMunicipalities(watch("Estado"));
 
   const onSubmit = (data) => {
-    console.log(data);
+    try {
+      addUser(data);
+    } catch (error) {}
   };
 
   const errorsList = Object.entries(errors);

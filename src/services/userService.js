@@ -9,9 +9,9 @@ const authUser = async (user) => {
     },
   });
 
-  if (!request.ok) throw new Error("Correo/Contraseña incorrectos");
-
   const response = await request.json();
+
+  if (!request.ok) throw response;
 
   return response;
 };
@@ -19,15 +19,26 @@ const authUser = async (user) => {
 const getUser = async (token) => {
   const request = await fetch(`${URL_BASE}/user`, {
     headers: {
-      Authorization: "Bearer " + token, // Pass JWT via Authorization header
+      Authorization: `Bearer ${token}`,
     },
   });
-
-  if (!request.ok) throw new Error("Usuario sin autorizacion");
 
   const response = await request.json();
 
   return response;
 };
 
-export { authUser, getUser };
+const postUser = async (user) => {
+  const request = await fetch(`${URL_BASE}/user`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+
+  const response = await request.json();
+
+  return response;
+};
+
+export { authUser, getUser, postUser };
