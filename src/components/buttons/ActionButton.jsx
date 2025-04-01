@@ -14,7 +14,9 @@ export default function ActionButton({
       style={{
         width: width,
       }}
-      className={`${styles["btnBase"]} ${styles[variant]} ${styles[size]} ${className}`}
+      className={`${styles["btnBase"]} ${styles[variant]} ${styles[size]} ${
+        className && className
+      }`}
       type={type}
       onClick={onClick}
     >

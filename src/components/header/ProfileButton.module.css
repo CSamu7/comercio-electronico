@@ -1,0 +1,32 @@
+.btnProfile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.profileButton:hover {
+  background-color: var(--gray-blue);
+  transition: 1s;
+}
+
+.menuUser {
+  position: absolute;
+  left: 0;
+  bottom: -117px;
+  z-index: 1;
+
+  border-radius: 5px;
+  width: 200px;
+  box-shadow: 0 0 5px #333;
+  background-color: #333
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  padding: 0;
+  list-style-type: none;
+}
+

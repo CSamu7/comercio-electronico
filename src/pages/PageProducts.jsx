@@ -5,15 +5,14 @@ import Filters from "../components/product/Filters";
 import { useProduct } from "../hooks/useProduct";
 import styles from "./PageProducts.module.css";
 import { useForm } from "react-hook-form";
-import { useFilters } from "../hooks/useFilters";
+import { useProductsFilter } from "../hooks/useProductsFilter";
 
 export default function Products() {
   const { products } = useProduct();
-  const { register, handleSubmit, setValue } = useForm();
-  const { applyFilters } = useFilters(products);
+  const { register, setValue } = useForm();
+  const { applyFilters } = useProductsFilter(products);
 
   const filterProducts = applyFilters(products);
-
   const [listProducts, setListProducts] = useState(filterProducts);
 
   const cardsProducts = listProducts.map((product) => {

@@ -3,10 +3,12 @@ import LinkButton from "../buttons/LinkButton";
 import CardProduct from "./CardProduct";
 import styles from "./SectionProducts.module.css";
 
-export default function SectionProducts({ title }) {
-  const { products } = useProduct();
+export default function SectionProducts({ title, filterName, filterValue }) {
+  const { filterProducts } = useProduct();
 
-  const cardsProducts = products.map((product) => {
+  const filtProducts = filterProducts(filterName, filterValue);
+
+  const cardsProducts = filtProducts.map((product) => {
     return <CardProduct product={product} key={product.id}></CardProduct>;
   });
 

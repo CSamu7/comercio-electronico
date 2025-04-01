@@ -12,7 +12,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 export default function Login() {
-  //TODO: Crear el hook de form.
   const navigate = useNavigate();
   const {
     register,

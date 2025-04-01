@@ -7,24 +7,20 @@ import LinkButton from "../buttons/LinkButton";
 
 import useWindowSize from "../../hooks/useWindowSize";
 import { useUser } from "../../hooks/useUser";
-import ActionButton from "../buttons/ActionButton";
-import MenuUser from "../MenuUser";
+import ProfileButton from "./ProfileButton";
 
 export default function Header() {
   const [width] = useWindowSize();
   const { user } = useUser();
 
   const btnProfile = user ? (
-    <ActionButton variant="btnWithBg">
-      <></>
-    </ActionButton>
+    <ProfileButton user={user}></ProfileButton>
   ) : (
     <LinkButton variant="btnWithBg" url="/inicio-de-sesion">
       Iniciar sesion
     </LinkButton>
   );
 
-  //TODO: Si no hay un usuario cargado, quitar el carrito de compras.
   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>
