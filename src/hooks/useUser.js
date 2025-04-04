@@ -36,7 +36,9 @@ const useUser = () => {
       direc: `${user["Calle"]}, ${user["Municipio"]}, ${user["Estado"]}`,
     };
 
-    const msg = postUser(bodyUser);
+    const msg = await postUser(bodyUser);
+
+    return msg;
   };
 
   const logout = () => {

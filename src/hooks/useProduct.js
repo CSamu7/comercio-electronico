@@ -1,7 +1,17 @@
-import productsJSON from "../../products.json";
+import { useEffect, useState } from "react";
+import { getAllProducts } from "../services/productService";
 
 const useProduct = () => {
-  const products = [...productsJSON];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const list = await getAllProducts();
+      setProducts(list);
+    };
+
+    getProducts();
+  }, []);
 
   const getColumnValues = (products, column) => {
     const value = products.reduce((acc, product) => {
@@ -11,14 +21,14 @@ const useProduct = () => {
     return Array.from(value);
   };
 
-  const getProducts = () => {
-    return products;
+  const filterProducts = (filter, value) => {
+    return products.filter((product) => product[filter] === value);
   };
 
   return {
-    getProducts,
     products,
     getColumnValues,
+    filterProducts,
   };
 };
 

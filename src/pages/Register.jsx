@@ -1,12 +1,16 @@
+import styles from "./Register.module.css";
+
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useLocations } from "../hooks/useLocations";
+import { useUser } from "../hooks/useUser";
+
 import ActionButton from "../components/buttons/ActionButton";
 import FormInput from "../components/form/FormInput";
 import MessageError from "../components/form/MessageError";
 import Select from "../components/form/Select";
 import Layout from "../components/Layout";
-import { useLocations } from "../hooks/useLocations";
-import { useUser } from "../hooks/useUser";
-import styles from "./Register.module.css";
-import { useForm } from "react-hook-form";
+import Loader from "../components/Loader";
 
 export default function Register() {
   const {
@@ -14,17 +18,32 @@ export default function Register() {
     handleSubmit,
     watch,
     formState: { errors },
+    setError,
+    clearErrors,
   } = useForm();
   const { getStates, getMunicipalities } = useLocations();
   const { addUser } = useUser();
+  const [isLoading, setIsLoading] = useState(false);
 
   const states = getStates();
   const municipalities = getMunicipalities(watch("Estado"));
 
-  const onSubmit = (data) => {
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => clearTimeout(timer);
+  }, [isLoading]);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+
     try {
-      addUser(data);
-    } catch (error) {}
+      await addUser(data);
+    } catch (error) {
+      setError("service", {
+        message: error.msg,
+      });
+    }
   };
 
   const errorsList = Object.entries(errors);
@@ -92,7 +111,12 @@ export default function Register() {
               register={register}
               type="checkbox"
             ></FormInput>
-            {errorsList.length > 0 && (
+          </div>
+
+          <div className={styles.formState}>
+            {isLoading && <Loader className={styles.loader}></Loader>}
+
+            {errorsList.length > 0 && !isLoading && (
               <MessageError variant="withBg">
                 {errorsList[0][1].message}
               </MessageError>
@@ -103,6 +127,7 @@ export default function Register() {
             className={styles.btnSubmit}
             type="submit"
             variant="btnWithBg"
+            onClick={() => clearErrors("service")}
           >
             Registrarse
           </ActionButton>

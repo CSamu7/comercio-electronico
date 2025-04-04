@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import style from "./Login.module.css";
+import styles from "./Login.module.css";
 import LinkButton from "../components/buttons/LinkButton";
 import ActionButton from "../components/buttons/ActionButton";
 import MessageError from "../components/form/MessageError";
@@ -9,7 +9,7 @@ import { useUser } from "../hooks/useUser";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Login() {
   //TODO: Crear el hook de form.
@@ -25,6 +25,12 @@ export default function Login() {
   const { auth } = useUser();
   const { addItem } = useLocalStorage();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => clearTimeout(timer);
+  }, [isLoading]);
 
   const onSubmitForm = async (data) => {
     setIsLoading(true);
@@ -42,17 +48,15 @@ export default function Login() {
       setError("service", {
         message: error.msg,
       });
-    } finally {
-      setIsLoading(false);
     }
   };
 
   return (
     <Layout>
-      <div className={style.mainPage}>
-        <div className={style.formContainer}>
-          <h2 className={style.formTitle}>Inicio de sesión</h2>
-          <form className={style.form} onSubmit={handleSubmit(onSubmitForm)}>
+      <div className={styles.mainPage}>
+        <div className={styles.formContainer}>
+          <h2 className={styles.formTitle}>Inicio de sesión</h2>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmitForm)}>
             <input
               type="email"
               placeholder="Email"
@@ -71,6 +75,7 @@ export default function Login() {
                 required: { value: true, message: "Ingresa tu contraseña" },
               })}
             />
+
             {errors.password && (
               <MessageError variant="noBg">
                 {errors.password.message}
@@ -79,21 +84,23 @@ export default function Login() {
 
             <LinkButton
               variant="btnInline"
-              className={style.forgetPasswordLink}
+              className={styles.forgetPasswordLink}
             >
               ¿Has olvidado tu contraseña?
             </LinkButton>
 
-            {isLoading && <Loader className={style.loader}></Loader>}
+            <div className={styles.formState}>
+              {isLoading && <Loader className={styles.loader}></Loader>}
 
-            {errors.service && (
-              <MessageError variant="withBg">
-                {errors.service.message}
-              </MessageError>
-            )}
+              {errors.service && !isLoading && (
+                <MessageError variant="withBg">
+                  {errors.service.message}
+                </MessageError>
+              )}
+            </div>
 
             <ActionButton
-              className={style.btnLogIn}
+              className={styles.btnLogIn}
               variant="btnWithBg"
               width="100%"
               type="submit"
@@ -101,7 +108,7 @@ export default function Login() {
             >
               Iniciar sesión
             </ActionButton>
-            <div className={style.formRegister}>
+            <div className={styles.formRegister}>
               <p>¿No tienes una cuenta?</p>
               <LinkButton variant="btnInline" url="/registro">
                 Registrate aquí

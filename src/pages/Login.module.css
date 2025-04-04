@@ -61,7 +61,13 @@
 }
 
 .loader {
-  margin-bottom: 50px;
-  align-self: center;
   transform: scale(1.5);
+}
+
+.formState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 30px 0px;
 }

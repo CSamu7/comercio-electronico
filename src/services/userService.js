@@ -33,10 +33,13 @@ const postUser = async (user) => {
     headers: {
       "Content-Type": "application/json",
     },
+    method: "POST",
     body: JSON.stringify(user),
   });
 
   const response = await request.json();
+
+  if (!request.ok) throw response;
 
   return response;
 };
