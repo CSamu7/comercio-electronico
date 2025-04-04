@@ -1,34 +1,37 @@
-  # POST http://localhost/backend/user
-
-  # {
-  #   "email": "samuelpdg2003@gmail.com"
-  # }
-
-  POST http://localhost/backend/public/user/auth
-  content-type: application/json
-
-  {
-    "email": "samuelpdg2003@gmail.com",
-    "passw": "joseeschingon"
-  }
-
-  # GET http://localhost/backend/public/user
-  # Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhbXVlbHBkZzIwMDNAZ21haWwuY29tIiwiaWQiOjF9.dSTbK_Wcb4Mv5qmymHa_W3JAN5NFrwG5HskA1x7r8CI
-
-  # POST http://localhost/backend/public/user/auth
+  # POST http://localhost/backend/public/user/authhttp://localhost/backend/public/user/auth
   # content-type: application/json
 
   # {
   #   "email": "samuelpdg2003@gmail.com",
-  #   "passw": "sdadsa"
-  # }  
-  
-  ###
-
-  # POST http://localhost/backend/public/user/auth
-  # content-type: application/json
-
-  # {
-  #   "email": "jos333-@hotmail.com",
-  #   "passw": "xamppesmrda"
+  #   "passw": "joseeschingon"
   # }
+###
+GET http://localhost/backend/public/user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhbXVlbHBkZzIwMDNAZ21haWwuY29tIiwiaWQiOjF9.6sy4xQeYriENHEES_cZEk7qRiDoHkR0ca4cG_qs4sYQ
+###
+POST http://localhost/backend/public/user/
+Content-Type: application/json
+
+{
+  "nombre": "Oscar Samuel",
+  "apeP": "Pérez",
+  "apeM": "De Gante",
+  "email": "samuelelpapu@gmail.com",
+  "passw": "ykesputo",
+  "direc": "Paseos del Papu, Estado del Papu"
+}
+###
+POST http://localhost/backend/public/user/
+Content-Type: application/json
+
+{
+  "nombre": "Oscar Samuel",
+  "apeP": "Pérez",
+  "apeM": "De Gante",
+  "email": "samuelpdg2003@gmail.com",
+  "passw": "ykesputo",
+  "direc": "Paseos del Papu, Estado del Papu"
+}
+
+###
+GET http://localhost/backend/public/product/
