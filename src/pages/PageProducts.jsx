@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useProduct } from "../hooks/useProduct";
+import { useProductsFilter } from "../hooks/useProductsFilter";
+
 import Layout from "../components/Layout";
 import CardProduct from "../components/product/CardProduct";
 import Filters from "../components/product/Filters";
-import { useProduct } from "../hooks/useProduct";
 import styles from "./PageProducts.module.css";
-import { useForm } from "react-hook-form";
-import { useProductsFilter } from "../hooks/useProductsFilter";
 
 export default function Products() {
-  const { products } = useProduct();
-  const { register, setValue } = useForm();
+  const { products, getColumnValues } = useProduct();
   const { applyFilters } = useProductsFilter(products);
 
-  const filterProducts = applyFilters(products);
-  const [listProducts, setListProducts] = useState(filterProducts);
+  const filterProducts = applyFilters();
 
-  const cardsProducts = listProducts.map((product) => {
+  const brands = getColumnValues(products, "marca");
+  const departments = getColumnValues(products, "departamento");
+
+  const cardsProducts = filterProducts.map((product) => {
     return <CardProduct product={product} key={product.id}></CardProduct>;
   });
 
@@ -23,9 +23,9 @@ export default function Products() {
     <Layout>
       <div className={styles.mainContent}>
         <Filters
-          products={listProducts}
-          register={register}
-          setValue={setValue}
+          products={filterProducts}
+          brands={brands}
+          departments={departments}
         ></Filters>
         <section className={styles.products}>
           {cardsProducts.length >= 0 ? cardsProducts : <p>Sin resultados</p>}

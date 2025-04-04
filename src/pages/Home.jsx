@@ -46,7 +46,7 @@ export default function Home() {
         <SectionProducts
           title="Telescopios"
           filterName="departamento"
-          filterValue="Telescopio"
+          filterValue="Telescopios"
         ></SectionProducts>
         <SectionProducts
           title="Binoculares"
@@ -54,9 +54,9 @@ export default function Home() {
           filterValue="Binoculares"
         ></SectionProducts>
         <SectionProducts
-          title="Filtros"
+          title="Accesorios"
           filterName="departamento"
-          filterValue="Filtros"
+          filterValue="Accesorios"
         ></SectionProducts>
       </div>
     </Layout>

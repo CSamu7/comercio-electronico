@@ -22,6 +22,7 @@ const useProduct = () => {
   };
 
   const filterProducts = (filter, value) => {
+    //TODO: Solo regresar 5
     return products.filter((product) => product[filter] === value);
   };
 

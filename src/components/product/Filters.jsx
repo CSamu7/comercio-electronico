@@ -1,20 +1,20 @@
 import styles from "./Filters.module.css";
-import { useProduct } from "../../hooks/useProduct";
 import FormInput from "../form/FormInput";
 import ListFilters from "./ListFilters";
 import ActionButton from "../buttons/ActionButton";
+import { useProductsFilter } from "../../hooks/useProductsFilter";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
-export default function Filters({ products, register, setValue }) {
-  const { getColumnValues } = useProduct();
+export default function Filters({ brands, departments }) {
+  const { addMultipleFilters } = useProductsFilter();
+  const { register, getValues, setValue } = useForm();
+  const navigate = useNavigate();
 
-  const brands = getColumnValues(products, "marca");
-  const departments = getColumnValues(products, "departamento");
-
-  //TODO: Crear otro componente para los filtros
+  //TODO: Controlar aqui todos los filtros. Los filtros que estan en ListFilters pasarlos aqui.
   return (
-    <div className={styles.filters}>
+    <form className={styles.filters}>
       <h2>Filtros</h2>
-
       <ListFilters
         title="Tipos"
         list={departments}
@@ -37,17 +37,32 @@ export default function Filters({ products, register, setValue }) {
         label="Precio minimo"
         width="80"
       ></FormInput>
-
       <FormInput
         register={register}
         label="Precio maximo"
         width="80"
       ></FormInput>
-      <ActionButton variant={"btnWithBg"} width="180px" size="small">
+      <ActionButton
+        variant={"btnWithBg"}
+        width="180px"
+        size="small"
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault();
+
+          const values = getValues(["Precio minimo", "Precio maximo"]);
+          const urlParams = [
+            ["Precio minimo", values[0]],
+            ["Precio maximo", values[1]],
+          ];
+
+          addMultipleFilters(urlParams);
+
+          navigate(0);
+        }}
+      >
         Aplicar precios
       </ActionButton>
-
-      <h3>Opiniones</h3>
-    </div>
+    </form>
   );
 }

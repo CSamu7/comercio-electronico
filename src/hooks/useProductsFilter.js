@@ -7,15 +7,32 @@ const useProductsFilter = (listProducts = []) => {
     nombre: searchParams.get("nombre") ?? "",
     departamento: searchParams.getAll("Tipos") ?? [],
     marca: searchParams.getAll("Marcas") ?? [],
-    precioMinimo: searchParams.get("precio-minimo") ?? 0,
-    precioMaximo: searchParams.get("precio-maximo") ?? 60000,
+    precioMinimo: Number(searchParams.get("Precio minimo")) || 0,
+    precioMaximo: Number(searchParams.get("Precio maximo")) || 100000,
     calificacion: searchParams.get("calificacion") ?? 4,
   };
 
   const addFilter = (name, value) => {
-    setSearchParams((prev) => {
-      return [...prev.entries(), [name, value]];
-    });
+    const newParams = new URLSearchParams(searchParams);
+    newParams.append(name, value);
+
+    setSearchParams(newParams);
+  };
+
+  const addMultipleFilters = (filters = []) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    for (const [name, value] of filters) {
+      if (value === "") {
+        newParams.delete(name);
+      } else if (newParams.has(name)) {
+        newParams.set(name, value);
+      } else {
+        newParams.append(name, value);
+      }
+    }
+
+    setSearchParams(newParams);
   };
 
   const deleteFilter = (name, value) => {
@@ -25,33 +42,37 @@ const useProductsFilter = (listProducts = []) => {
 
   const applyFilters = () => {
     let products = filterByName(listProducts);
-    console.log(filterByTypes("departamento"));
-    console.log(filterByTypes("marca"));
+    products = filterByTypes("departamento", products);
+    products = filterByTypes("marca", products);
+    products = filterByPrice(products);
 
     return products;
   };
 
-  const filterByName = (listProducts) => {
+  const filterByName = (list) => {
+    if (filters["nombre"] === "") return list;
+
     const regexName = new RegExp(`${filters.nombre}`, "im");
 
     return listProducts.filter((item) => regexName.test(item["name"]));
   };
 
   //Item = departamento, filters = departamentos
-  const filterByTypes = (name) => {
+  const filterByTypes = (name, list) => {
     if (filters[name].length !== 0) {
-      return listProducts.filter((item) => filters[name].includes(item[name]));
+      return list.filter((item) => filters[name].includes(item[name]));
     }
 
-    return listProducts;
+    return list;
   };
 
-  const filterByPrice = () => {
-    return obj.filter(
-      (item) =>
-        item["price"] >= filters.precioMinimo &&
-        item["price"] <= filters.precioMaximo
-    );
+  const filterByPrice = (list) => {
+    return list.filter((item) => {
+      return (
+        (item["precio"] * 19.92).toFixed(2) >= filters.precioMinimo &&
+        (item["precio"] * 19.92).toFixed(2) <= filters.precioMaximo
+      );
+    });
   };
 
   const filterByRating = () => {};
@@ -59,6 +80,7 @@ const useProductsFilter = (listProducts = []) => {
   return {
     addFilter,
     deleteFilter,
+    addMultipleFilters,
     applyFilters,
   };
 };
