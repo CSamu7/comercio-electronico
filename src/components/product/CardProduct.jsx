@@ -5,7 +5,6 @@ import ActionButton from "../buttons/ActionButton";
 export default function CardProduct({ product }) {
   const { url_img, shortname, price, discount, reviews } = product;
 
-  console.log(reviews);
   const rating = 5;
 
   return (

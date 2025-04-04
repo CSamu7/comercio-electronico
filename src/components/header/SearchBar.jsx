@@ -1,19 +1,23 @@
 import { useForm } from "react-hook-form";
 import styles from "./SearchBar.module.css";
 import ActionButton from "../buttons/ActionButton";
-import { useNavigate, useSearchParams } from "react-router";
+import { useLocation, useNavigate, useSearchParams } from "react-router";
 
 export default function SearchBar() {
   const { register, handleSubmit } = useForm();
   const [, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const searchProducts = (data) => {
-    setSearchParams({
-      nombre: data["Busqueda"],
-    });
+    const params = new URLSearchParams({ nombre: data["Busqueda"] });
 
-    navigate(0);
+    if (location.pathname === "/productos") {
+      setSearchParams(params);
+      navigate(0);
+    } else {
+      navigate(`/productos?${params}`);
+    }
   };
 
   return (

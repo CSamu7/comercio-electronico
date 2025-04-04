@@ -1,0 +1,14 @@
+.menuItem {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: var(--light-blue);
+}
+
+.btnMenu {
+  text-decoration: none;
+  text-align: left;
+  color: white;
+}

@@ -1,5 +1,6 @@
 import { useSearchParams, useNavigate } from "react-router";
 import FormInput from "../form/FormInput";
+import { useProductsFilter } from "../../hooks/useProductsFilter";
 
 export default function ListFilters({
   children,
@@ -8,22 +9,14 @@ export default function ListFilters({
   register,
   setValue,
 }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { addFilter, deleteFilter } = useProductsFilter(list);
 
   //TODO: Mover al hook de useFilters
   const addFilters = (e) => {
     const [name, value] = e.target.name.split("-");
-
-    if (e.target.checked) {
-      setSearchParams((prev) => {
-        return [...prev.entries(), [name, value]];
-      });
-    } else {
-      searchParams.delete(name, value);
-      setSearchParams(searchParams);
-    }
-
+    e.target.checked ? addFilter(name, value) : deleteFilter(name, value);
     navigate(0);
   };
   const options = list.map((item) => {

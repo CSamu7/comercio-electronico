@@ -3,6 +3,7 @@
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
+  background-color: transparent;
 }
 
 .btnWithBg {
@@ -13,7 +14,6 @@
 
 .btnInline {
   text-decoration:underline;
-  color: var(--light-blue);
   font-weight: bold;
 }
 

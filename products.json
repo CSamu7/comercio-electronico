@@ -73,5 +73,14 @@
     "url_img": "https://m.media-amazon.com/images/I/71QSEtDqsUL._AC_SL1500_.jpg",
     "marca": "Celestron",
     "departamento": "Binoculares"
+  }, 
+  {
+    "id": 7,
+    "name": "Sanpyl Juego de Filtros para Telescopio, 1,25 Pulgadas, Reduce la Contaminación Lumínica, Mejora Las Vistas Planetarias Lunares, Moon&Skyglow, Filtro Polarizador",
+    "shortname": "Sanpyl Juego de Filtros para Telescopio, 1,25 Pulgadas",
+    "price": 365,
+    "url_img": "https://m.media-amazon.com/images/I/61e-e+hGiVL._AC_SL1500_.jpg",
+    "marca": "Sanpyl",
+    "departamento": "Filtros"
   }
 ]

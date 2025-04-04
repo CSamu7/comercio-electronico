@@ -43,9 +43,21 @@ export default function Home() {
 
         {width > 900 && <Carousel imgs={IMGS}></Carousel>}
 
-        <SectionProducts title="Telescopios"></SectionProducts>
-        <SectionProducts title="Binoculares"></SectionProducts>
-        <SectionProducts title="Filtros"></SectionProducts>
+        <SectionProducts
+          title="Telescopios"
+          filterName="departamento"
+          filterValue="Telescopio"
+        ></SectionProducts>
+        <SectionProducts
+          title="Binoculares"
+          filterName="departamento"
+          filterValue="Binoculares"
+        ></SectionProducts>
+        <SectionProducts
+          title="Filtros"
+          filterName="departamento"
+          filterValue="Filtros"
+        ></SectionProducts>
       </div>
     </Layout>
   );
