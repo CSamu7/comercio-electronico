@@ -1,6 +1,5 @@
 import styles from "./StarRating.module.css";
 import starSvgUrl from "../../assets/star_rating.png";
-import Icon from "../Icon";
 
 export default function StarRating({ rating, children }) {
   const stars = Array.from({ length: rating }, (_, k) => (

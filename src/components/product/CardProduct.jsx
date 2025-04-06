@@ -1,6 +1,6 @@
 import styles from "./CardProduct.module.css";
 import StarRating from "./StarRating";
-import ActionButton from "../buttons/ActionButton";
+import LinkButton from "../buttons/LinkButton";
 
 export default function CardProduct({ product }) {
   const { url_imagen, nombrecorto, precio, descuento, reviews } = product;
@@ -20,9 +20,9 @@ export default function CardProduct({ product }) {
       )}
 
       <strong className={styles.productPrice}>${priceFixed}</strong>
-      <ActionButton width="100%" variant="btnWithBg">
+      <LinkButton width="100%" variant="btnWithBg" url={`/producto/${2}`}>
         Ver producto
-      </ActionButton>
+      </LinkButton>
     </div>
   );
 }
