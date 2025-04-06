@@ -54,7 +54,7 @@ const useProductsFilter = (listProducts = []) => {
 
     const regexName = new RegExp(`${filters.nombre}`, "im");
 
-    return listProducts.filter((item) => regexName.test(item["name"]));
+    return listProducts.filter((item) => regexName.test(item["nombre"]));
   };
 
   //Item = departamento, filters = departamentos
