@@ -11,6 +11,8 @@ import MessageError from "../components/form/MessageError";
 import Select from "../components/form/Select";
 import Layout from "../components/Layout";
 import Loader from "../components/Loader";
+import Modal from "../components/Modal";
+import LinkButton from "../components/buttons/LinkButton";
 
 export default function Register() {
   const {
@@ -24,6 +26,7 @@ export default function Register() {
   const { getStates, getMunicipalities } = useLocations();
   const { addUser } = useUser();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccesful, setIsSuccesful] = useState(false);
 
   const states = getStates();
   const municipalities = getMunicipalities(watch("Estado"));
@@ -39,6 +42,7 @@ export default function Register() {
 
     try {
       await addUser(data);
+      setIsSuccesful(true);
     } catch (error) {
       setError("service", {
         message: error.msg,
@@ -123,6 +127,20 @@ export default function Register() {
             )}
           </div>
 
+          <Modal isOpen={isSuccesful && !isLoading}>
+            <h2 className={styles.modalTitle}>
+              Tu cuenta ha sido registrada exitosamente
+            </h2>
+
+            <LinkButton
+              url="../inicio-de-sesion"
+              variant="btnWithBg"
+              className={styles.modalBtn}
+            >
+              Iniciar Sesión
+            </LinkButton>
+          </Modal>
+
           <ActionButton
             className={styles.btnSubmit}
             type="submit"
@@ -133,6 +151,7 @@ export default function Register() {
           </ActionButton>
         </form>
       </div>
+      {}
     </Layout>
   );
 }
