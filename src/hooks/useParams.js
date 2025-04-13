@@ -12,6 +12,16 @@ const useURLParams = () => {
     setSearchParams(newParams);
   };
 
+  const replaceFilter = (name, value) => {
+    if (searchParams.has(name)) {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete(name);
+      newParams.append(name, value);
+
+      setSearchParams(newParams);
+    }
+  };
+
   const addMultipleFilters = (filters = []) => {
     const newParams = new URLSearchParams(searchParams);
 
@@ -37,6 +47,7 @@ const useURLParams = () => {
     searchParams,
     addFilter,
     addMultipleFilters,
+    replaceFilter,
     deleteFilter,
   };
 };

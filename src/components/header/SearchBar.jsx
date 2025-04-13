@@ -7,12 +7,12 @@ import { useURLParams } from "../../hooks/useParams";
 
 export default function SearchBar() {
   const { register, handleSubmit } = useForm();
-  const { addFilter } = useURLParams();
+  const { replaceFilter } = useURLParams();
   const navigate = useNavigate();
 
   const searchProducts = (data) => {
     if (location.pathname === "/productos") {
-      addFilter("nombre", data["Busqueda"]);
+      replaceFilter("nombre", data["Busqueda"]);
     } else {
       navigate(`/productos?nombre=${data["Busqueda"]}`);
     }
