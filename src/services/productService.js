@@ -8,4 +8,12 @@ const getAllProducts = async () => {
   return response;
 };
 
-export { getAllProducts };
+const getProduct = async ({ params }) => {
+  const request = await fetch(`${URL_BASE}/product/${params.idProduct}`);
+
+  const response = await request.json();
+
+  return response;
+};
+
+export { getAllProducts, getProduct };

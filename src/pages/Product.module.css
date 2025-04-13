@@ -1,0 +1,40 @@
+.product {
+  padding: 30px;
+}
+
+.productLayout {
+  display: flex;
+  gap: 20px;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.productInfo > * {
+  margin: 0;
+}
+
+.title {
+  color: var(--dark-blue);
+  font-size: 1.4em;
+}
+
+.img {
+  width: 360px;
+  height: 450px;
+
+  object-fit: contain;
+}
+
+.priceAmount {
+  font-size: 2em;
+  color: var(--light-blue);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}

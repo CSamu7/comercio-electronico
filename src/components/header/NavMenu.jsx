@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styles from "./NavMenu.module.css";
 
 export default function NavMenu() {
@@ -17,7 +18,7 @@ export default function NavMenu() {
 
     return (
       <li key={page}>
-        <a href={url === "inicio" ? "/" : url}>{page}</a>
+        <Link to={`/${url}`}>{page}</Link>
       </li>
     );
   });

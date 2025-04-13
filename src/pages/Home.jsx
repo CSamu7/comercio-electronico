@@ -1,10 +1,19 @@
+import { useLoaderData } from "react-router";
 import Carousel from "../components/Carousel";
 import Layout from "../components/Layout";
 import SectionProducts from "../components/product/SectionProducts";
 import useWindowSize from "../hooks/useWindowSize";
 import styles from "./Home.module.css";
+import { useProduct } from "../hooks/useProduct";
 
 export default function Home() {
+  const products = useLoaderData();
+  const filter = useProduct(products);
+
+  const telescopes = filter.filterByTypes(["Telescopios"], "departamento");
+  const binoculars = filter.filterByTypes(["Binoculares"], "departamento");
+  const accessories = filter.filterByTypes(["Accesorios"], "departamento");
+
   const [width] = useWindowSize();
 
   const IMGS = [
@@ -45,18 +54,15 @@ export default function Home() {
 
         <SectionProducts
           title="Telescopios"
-          filterName="departamento"
-          filterValue="Telescopios"
+          products={telescopes}
         ></SectionProducts>
         <SectionProducts
           title="Binoculares"
-          filterName="departamento"
-          filterValue="Binoculares"
+          products={binoculars}
         ></SectionProducts>
         <SectionProducts
           title="Accesorios"
-          filterName="departamento"
-          filterValue="Accesorios"
+          products={accessories}
         ></SectionProducts>
       </div>
     </Layout>

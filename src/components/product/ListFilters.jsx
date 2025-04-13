@@ -1,48 +1,39 @@
-import { useSearchParams, useNavigate } from "react-router";
-import FormInput from "../form/FormInput";
-import { useProductsFilter } from "../../hooks/useProductsFilter";
 import styles from "./ListFilters.module.css";
+import { useURLParams } from "../../hooks/useParams";
+import { Controller } from "react-hook-form";
+import Checkbox from "../form/Checkbox";
 
-export default function ListFilters({
-  children,
-  title,
-  list,
-  register,
-  setValue,
-}) {
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const { addFilter, deleteFilter } = useProductsFilter(list);
+export default function ListFilters({ children, title, list, control }) {
+  const { searchParams, addFilter, deleteFilter } = useURLParams();
 
-  const addFilters = (e) => {
-    const [name, value] = e.target.name.split("_");
-    e.target.checked ? addFilter(name, value) : deleteFilter(name, value);
-    navigate(0);
+  const addFilters = (name, checked) => {
+    const [filterName, value] = name.split("_");
+
+    !checked ? addFilter(filterName, value) : deleteFilter(filterName, value);
   };
-  const options = list.map((item) => {
+
+  const options = list.map((item, index) => {
     if (!item) return;
 
     return (
-      <FormInput
-        key={item}
-        type="checkbox"
-        register={register}
+      <Controller
+        key={index}
+        control={control}
         name={`${title}_${item}`}
-        label={item}
-        width={20}
-        handleChange={addFilters}
-      ></FormInput>
+        defaultValue={searchParams.has(title, item)}
+        render={({ field: { onChange, name, value } }) => (
+          <Checkbox
+            label={`${item}`}
+            checked={value}
+            onChange={(e) => {
+              addFilters(name, value);
+              onChange(e);
+            }}
+          />
+        )}
+      ></Controller>
     );
   });
-
-  //TODO: Posibles optimizaciones
-  const setFormValues = () => {
-    for (const [param, value] of searchParams.entries()) {
-      setValue(`${param}_${value}`, true);
-    }
-  };
-
-  setFormValues();
 
   return (
     <div>

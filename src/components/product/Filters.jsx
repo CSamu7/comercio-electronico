@@ -2,14 +2,12 @@ import styles from "./Filters.module.css";
 import FormInput from "../form/FormInput";
 import ListFilters from "./ListFilters";
 import ActionButton from "../buttons/ActionButton";
-import { useProductsFilter } from "../../hooks/useProductsFilter";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useURLParams } from "../../hooks/useParams";
 
 export default function Filters({ brands, departments }) {
-  const { addMultipleFilters } = useProductsFilter();
-  const { register, getValues, setValue } = useForm();
-  const navigate = useNavigate();
+  const { addMultipleFilters } = useURLParams();
+  const { register, getValues, setValue, control } = useForm();
 
   //TODO: Controlar aqui todos los filtros. Los filtros que estan en ListFilters pasarlos aqui.
   return (
@@ -20,6 +18,7 @@ export default function Filters({ brands, departments }) {
         list={departments}
         register={register}
         setValue={setValue}
+        control={control}
       >
         <h3>Tipos</h3>
       </ListFilters>
@@ -27,6 +26,7 @@ export default function Filters({ brands, departments }) {
         title="Marcas"
         list={brands}
         register={register}
+        control={control}
         setValue={setValue}
       >
         <h3>Marcas</h3>
@@ -57,8 +57,6 @@ export default function Filters({ brands, departments }) {
           ];
 
           addMultipleFilters(urlParams);
-
-          navigate(0);
         }}
       >
         Aplicar precios

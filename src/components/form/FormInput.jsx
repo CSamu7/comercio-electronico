@@ -11,7 +11,6 @@ export default function FormInput({
   maxLength,
   minLength,
   handleChange,
-  checked,
 }) {
   return (
     <div className={styles.formDiv}>

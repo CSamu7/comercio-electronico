@@ -1,19 +1,6 @@
-import { useEffect, useState } from "react";
-import { getAllProducts } from "../services/productService";
-
-const useProduct = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const getProducts = async () => {
-      const list = await getAllProducts();
-      setProducts(list);
-    };
-
-    getProducts();
-  }, []);
-
-  const getColumnValues = (products, column) => {
+const useProduct = (products = []) => {
+  //! Me sigue sin gustar pero bueno.
+  const getColumnValues = (column) => {
     const value = products.reduce((acc, product) => {
       return new Set([...acc, product[column]]);
     }, []);
@@ -21,15 +8,40 @@ const useProduct = () => {
     return Array.from(value);
   };
 
-  const filterProducts = (filter, value) => {
-    //TODO: Solo regresar 5
-    return products.filter((product) => product[filter] === value);
+  const filterName = (name, list = products, limit = 5) => {
+    if (name === "") return list;
+
+    const regexName = new RegExp(`${name}`, "im");
+
+    const productsByName = list.filter((item) =>
+      regexName.test(item["nombre"])
+    );
+
+    return productsByName.slice(0, limit);
+  };
+
+  const filterByTypes = (values = [], type, list = products, limit = 5) => {
+    if (values.length <= 0) return list;
+
+    const productsByType = list.filter((item) => values.includes(item[type]));
+
+    return productsByType.slice(0, limit);
+  };
+
+  const filterByPrice = (prices = [], list = products) => {
+    return list.filter((item) => {
+      return (
+        (item["precio"] * 19.92).toFixed(2) >= prices[0] &&
+        (item["precio"] * 19.92).toFixed(2) <= prices[1]
+      );
+    });
   };
 
   return {
-    products,
     getColumnValues,
-    filterProducts,
+    filterByTypes,
+    filterName,
+    filterByPrice,
   };
 };
 

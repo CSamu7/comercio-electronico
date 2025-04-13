@@ -9,6 +9,8 @@ import useWindowSize from "../../hooks/useWindowSize";
 import { useUser } from "../../hooks/useUser";
 import ProfileButton from "./ProfileButton";
 
+import Logo from "../../assets/logo.png";
+
 export default function Header() {
   const [width] = useWindowSize();
   const { user } = useUser();
@@ -24,7 +26,7 @@ export default function Header() {
   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>
-        <img className={styles.headerLogo} src="./logo.png"></img>
+        <img className={styles.headerLogo} src={Logo}></img>
         <SearchBar></SearchBar>
         {width < 720 && (
           <svg
