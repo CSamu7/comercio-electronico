@@ -1,5 +1,5 @@
 .product {
-  padding: 30px;
+  padding: 50px clamp(50px, 9vw, 200px);
 }
 
 .productLayout {

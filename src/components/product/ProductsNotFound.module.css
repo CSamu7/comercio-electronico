@@ -1,0 +1,10 @@
+.msgNoProducts {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.listErrors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

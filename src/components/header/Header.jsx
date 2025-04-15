@@ -43,7 +43,7 @@ export default function Header() {
 
         {width > 720 && (
           <div className={styles.headerUser}>
-            {user && <ShoppingCart></ShoppingCart>}
+            <ShoppingCart></ShoppingCart>
             {btnProfile}
           </div>
         )}
