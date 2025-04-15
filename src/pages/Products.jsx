@@ -5,6 +5,7 @@ import styles from "./Products.module.css";
 
 import { useProduct } from "../hooks/useProduct";
 import { useLoaderData, useSearchParams } from "react-router";
+import ProductsNotFound from "../components/product/ProductsNotFound";
 
 export default function Products() {
   const products = useLoaderData();
@@ -13,6 +14,7 @@ export default function Products() {
 
   const [searchParams] = useSearchParams();
   //!Horrible codigo
+  //!Si, sigue siendo horrible y lo tendre que checar algun dia.
   const filters = {
     nombre: searchParams.get("nombre") ?? "",
     departamento: searchParams.getAll("Tipos") ?? [],
@@ -49,6 +51,8 @@ export default function Products() {
     return <CardProduct product={product} key={product.id}></CardProduct>;
   });
 
+  console.log(cardsProducts);
+
   return (
     <Layout>
       <div className={styles.mainContent}>
@@ -58,7 +62,11 @@ export default function Products() {
           departments={departments}
         ></Filters>
         <section className={styles.products}>
-          {cardsProducts.length >= 0 ? cardsProducts : <p>Sin resultados</p>}
+          {cardsProducts.length > 0 ? (
+            cardsProducts
+          ) : (
+            <ProductsNotFound></ProductsNotFound>
+          )}
         </section>
       </div>
     </Layout>

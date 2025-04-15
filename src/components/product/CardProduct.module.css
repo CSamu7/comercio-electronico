@@ -8,7 +8,7 @@
 }
 
 .productImg {
-  width: clamp(100px, 15vw, 220px);
+  width: clamp(200px, 15vw, 220px);
   height: clamp(130px, 15vw, 250px);
   object-fit: contain;
 }
