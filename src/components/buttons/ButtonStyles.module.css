@@ -12,6 +12,11 @@
   background-color: var(--light-blue);
 }
 
+.btnDelete {
+  background-color: var(--red);
+  color: var(--white);
+}
+
 .btnInline {
   text-decoration:underline;
   font-weight: bold;

@@ -2,7 +2,7 @@ import styles from "./Header.module.css";
 
 import NavMenu from "./NavMenu";
 import SearchBar from "./SearchBar";
-import ShoppingCart from "./ShoppingCart";
+import ShoppingCart from "./ShoppingCartLogo";
 import LinkButton from "../buttons/LinkButton";
 
 import useWindowSize from "../../hooks/useWindowSize";

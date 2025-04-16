@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 50px;
+}
+
+.title {
+  color: var(--dark-blue);
+  margin: 0;
+}
+
+.layoutShoppingCart {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shoppingCartItems {
+  width: 1000px;
+}
+
+.subtotal {
+  align-self: flex-end;
+  font-weight: normal;
+  font-size: 1.1em;
+}
+
+.subtotalPrice {
+  color: var(--light-blue);
+  font-weight: bold;
+}
