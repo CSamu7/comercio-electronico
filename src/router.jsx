@@ -7,6 +7,8 @@ import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
 import Product from "./pages/Product.jsx";
 import { getAllProducts, getProduct } from "./services/productService.js";
+import AboutUs from "./pages/AboutUs.jsx";
+import Identity from "./pages/Identity.jsx";
 
 const homeRoutes = ["inicio", "/"].map((path) => {
   return (
@@ -18,7 +20,9 @@ const routesJSX = (
   <Route path="/">
     {homeRoutes}
     <Route path="/inicio-de-sesion" element={<Login></Login>}></Route>
+    <Route path="/acerca-de" element={<AboutUs></AboutUs>}></Route>
     <Route path="/registro" element={<Register></Register>}></Route>
+    <Route path="/identidad" element={<Identity></Identity>}></Route>
     <Route
       path="/productos"
       element={<Products></Products>}
