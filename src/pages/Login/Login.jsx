@@ -1,12 +1,12 @@
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import styles from "./Login.module.css";
-import LinkButton from "../components/buttons/LinkButton";
-import ActionButton from "../components/buttons/ActionButton";
-import MessageError from "../components/form/MessageError";
-import Loader from "../components/Loader";
+import LinkButton from "../../components/buttons/LinkButton";
+import ActionButton from "../../components/buttons/ActionButton";
+import MessageError from "../../components/form/MessageError";
+import Loader from "../../components/Loader";
 
-import { useUser } from "../hooks/useUser";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useUser } from "../../hooks/useUser";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";

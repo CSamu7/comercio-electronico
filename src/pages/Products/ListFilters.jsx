@@ -1,7 +1,7 @@
 import styles from "./ListFilters.module.css";
 import { useURLParams } from "../../hooks/useParams";
 import { Controller } from "react-hook-form";
-import Checkbox from "../form/Checkbox";
+import Checkbox from "../../components/form/Checkbox";
 
 export default function ListFilters({ children, title, list, control }) {
   const { searchParams, addFilter, deleteFilter } = useURLParams();

@@ -1,9 +1,9 @@
-import Layout from "../components/Layout";
-import CardProduct from "../components/product/CardProduct";
-import Filters from "../components/product/Filters";
+import Layout from "../../components/Layout";
+import CardProduct from "../../components/product/CardProduct";
+import Filters from "./Filters";
 import styles from "./Products.module.css";
 
-import { useProduct } from "../hooks/useProduct";
+import { useProduct } from "../../hooks/useProduct";
 import { useLoaderData, useSearchParams } from "react-router";
 
 export default function Products() {
