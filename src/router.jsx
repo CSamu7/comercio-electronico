@@ -1,11 +1,11 @@
 import { createBrowserRouter, createRoutesFromElements } from "react-router";
 import { Route } from "react-router";
 
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-import Products from "./pages/Products.jsx";
-import Product from "./pages/Product.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Register from "./pages/Register/Register.jsx";
+import Products from "./pages/Products/Products.jsx";
+import Product from "./pages/Product/Product.jsx";
 import { getAllProducts, getProduct } from "./services/productService.js";
 import ShoppingCart from "./pages/ShoppingCart.jsx";
 import AboutUs from "./pages/AboutUs.jsx";

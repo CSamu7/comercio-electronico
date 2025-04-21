@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router";
-import Carousel from "../components/Carousel";
-import Layout from "../components/Layout";
-import SectionProducts from "../components/product/SectionProducts";
-import useWindowSize from "../hooks/useWindowSize";
+import Carousel from "./Carousel";
+import Layout from "../../components/Layout";
+import SectionProducts from "../../components/product/SectionProducts";
+import useWindowSize from "../../hooks/useWindowSize";
 import styles from "./Home.module.css";
-import { useProduct } from "../hooks/useProduct";
+import { useProduct } from "../../hooks/useProduct";
 
 export default function Home() {
   const products = useLoaderData();

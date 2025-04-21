@@ -2,17 +2,17 @@ import styles from "./Register.module.css";
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocations } from "../hooks/useLocations";
-import { useUser } from "../hooks/useUser";
+import { useLocations } from "../../hooks/useLocations";
+import { useUser } from "../../hooks/useUser";
 
-import ActionButton from "../components/buttons/ActionButton";
-import FormInput from "../components/form/FormInput";
-import MessageError from "../components/form/MessageError";
-import Select from "../components/form/Select";
-import Layout from "../components/Layout";
-import Loader from "../components/Loader";
-import Modal from "../components/Modal";
-import LinkButton from "../components/buttons/LinkButton";
+import ActionButton from "../../components/buttons/ActionButton";
+import FormInput from "../../components/form/FormInput";
+import MessageError from "../../components/form/MessageError";
+import Select from "../../components/form/Select";
+import Layout from "../../components/Layout";
+import Loader from "../../components/Loader";
+import Modal from "../../components/Modal";
+import LinkButton from "../../components/buttons/LinkButton";
 
 export default function Register() {
   const {

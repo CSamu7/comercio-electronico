@@ -1,7 +1,7 @@
 import styles from "./Filters.module.css";
-import FormInput from "../form/FormInput";
+import FormInput from "../../components/form/FormInput";
 import ListFilters from "./ListFilters";
-import ActionButton from "../buttons/ActionButton";
+import ActionButton from "../../components/buttons/ActionButton";
 import { useForm } from "react-hook-form";
 import { useURLParams } from "../../hooks/useParams";
 

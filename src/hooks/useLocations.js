@@ -1,6 +1,6 @@
-import states from "../../estados.json";
-import towns from "../../estados-municipios.json";
-import { capitalize } from "../components/helpers/formatStrings";
+import states from "../data/estados.json";
+import towns from "../data/estados-municipios.json";
+import { capitalize } from "../utils/formatStrings";
 
 const useLocations = () => {
   const getStates = () => {

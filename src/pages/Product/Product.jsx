@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import styles from "./Product.module.css";
-import ActionButton from "../components/buttons/ActionButton";
-import Select from "../components/form/Select";
+import ActionButton from "../../components/buttons/ActionButton";
+import Select from "../../components/form/Select";
 import { useForm } from "react-hook-form";
-import LinkButton from "../components/buttons/LinkButton";
+import LinkButton from "../../components/buttons/LinkButton";
 
 export default function Product() {
   const [product] = useLoaderData();
