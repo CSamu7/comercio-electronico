@@ -5,7 +5,7 @@ import styles from "./Products.module.css";
 
 import { useProduct } from "../../hooks/useProduct";
 import { useLoaderData, useSearchParams } from "react-router";
-import ProductsNotFound from "../components/product/ProductsNotFound";
+import ProductsNotFound from "../../components/product/ProductsNotFound";
 
 export default function Products() {
   const products = useLoaderData();

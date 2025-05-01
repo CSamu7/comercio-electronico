@@ -13,15 +13,13 @@
   flex-direction: column;
   color: white;
   width: clamp(300px, 83vw, 1400px);
-  background-image: linear-gradient(to bottom, #335289, #3961a4, #3f70bf, #4480dc, #4990f9);
-  padding: 20px;
+  background-image: linear-gradient(to right, #4990f9, #558dea, #5d89dc, #6486cd, #6983bf);
+  padding: 30px;
 }
 
 @media (min-width: 720px) {
   .aboutUs {
     flex-direction: row;
-    background-image: linear-gradient(to right, #335289, #3961a4, #3f70bf, #4480dc, #4990f9);
-
   }
 
   .aboutUsMain {
@@ -31,6 +29,18 @@
 
 .aboutUsTitle {
   text-transform: uppercase;
+  font-size: 2em;
+  margin: 0px;
+}
+
+.aboutUsSlogan {
+  font-size: 1.5em;
+  margin: 10px 0px;
+}
+
+.aboutUsMain > p {
+  line-height: 1.6em;
+  font-weight: 300;
 }
 
 .aboutUsImgs {

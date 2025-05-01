@@ -14,7 +14,7 @@
 }
 
 .formTitle {
-  background-color: var(--gray-blue);
+  background-color: var(--dark-blue);
   color: white;
   padding: 25px;
   margin: 0;
@@ -56,8 +56,8 @@
   align-self: center;
 }
 
-.forgetPasswordLink {
-  margin-bottom: 40px;
+.formLink {
+  color: var(--gray-blue);
 }
 
 .loader {

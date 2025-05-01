@@ -27,7 +27,9 @@ export default function Home() {
         <article className={styles.aboutUs}>
           <div className={styles.aboutUsMain}>
             <h2 className={styles.aboutUsTitle}>Infinite Sky</h2>
-            <h3>&quot;El cosmo en tus manos&quot;</h3>
+            <h3 className={styles.aboutUsSlogan}>
+              &quot;El cosmo en tus manos&quot;
+            </h3>
             <p>
               Infinite Sky es una tienda en línea especializada en la venta de
               telescopios, accesorios y material astronómico de alta calidad.

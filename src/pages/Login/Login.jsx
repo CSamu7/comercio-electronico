@@ -81,10 +81,7 @@ export default function Login() {
               </MessageError>
             )}
 
-            <LinkButton
-              variant="btnInline"
-              className={styles.forgetPasswordLink}
-            >
+            <LinkButton variant="btnInline" className={styles.formLink}>
               ¿Has olvidado tu contraseña?
             </LinkButton>
 
@@ -109,7 +106,11 @@ export default function Login() {
             </ActionButton>
             <div className={styles.formRegister}>
               <p>¿No tienes una cuenta?</p>
-              <LinkButton variant="btnInline" url="/registro">
+              <LinkButton
+                variant="btnInline"
+                url="/registro"
+                className={styles.formLink}
+              >
                 Registrate aquí
               </LinkButton>
             </div>

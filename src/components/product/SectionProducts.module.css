@@ -8,13 +8,13 @@
   justify-content: space-between;
   align-items: center;
 
-  background-color: var(--gray-blue);
+  background-color: var(--dark-blue);
   padding: 0px 20px;
 }
 
 .sectionTitle {
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.5em;
   text-transform: uppercase;
 }
 
@@ -27,9 +27,8 @@
 }
 
 .btnSeeMore {
-  color: white;
+  color: var(--white);  
 }
-
 
 @media (min-width: 720px) {
   .products {
