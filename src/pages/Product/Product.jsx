@@ -1,18 +1,24 @@
-import { useLoaderData } from "react-router";
 import Layout from "../../components/Layout";
 import styles from "./Product.module.css";
 import ActionButton from "../../components/buttons/ActionButton";
 import Select from "../../components/form/Select";
-import { useForm } from "react-hook-form";
 import LinkButton from "../../components/buttons/LinkButton";
+
+import { useLoaderData } from "react-router";
+import { useForm } from "react-hook-form";
+import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export default function Product() {
   const [product] = useLoaderData();
-  const { nombre, url_imagen, descripcion, precio, stock } = product;
-
   const { register } = useForm();
+  const { addProduct } = useShoppingCart();
+
+  const { id_producto, nombre, url_imagen, descripcion, precio, stock } =
+    product;
 
   const options = Array.from({ length: stock }, (v, k) => k + 1);
+
+  console.log(product);
 
   return (
     <Layout>
@@ -36,7 +42,10 @@ export default function Product() {
               list={options}
             ></Select>
             <div className={styles.buttons}>
-              <ActionButton variant="btnWithBg">
+              <ActionButton
+                variant="btnWithBg"
+                onClick={() => addProduct(id_producto)}
+              >
                 Agregar al carrito
               </ActionButton>
               <ActionButton variant="btnWithBg">Comprar ahora</ActionButton>

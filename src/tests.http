@@ -35,3 +35,24 @@ Content-Type: application/json
 
 ###
 GET http://localhost/backend/public/product/
+
+###
+GET http://localhost/backend/public/product/1
+
+###
+GET http://localhost/backend/public/shopping-cart/1
+###
+PUT http://localhost/backend/public/shopping-cart/1
+Content-Type: application/json
+
+{
+  "id_prod": 16,
+  "cantidad": 1
+}
+###
+DELETE http://localhost/backend/public/shopping-cart/1
+Content-Type: application/json
+
+{
+  "id_prod": 16,
+}

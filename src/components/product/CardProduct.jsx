@@ -7,8 +7,7 @@ export default function CardProduct({ product }) {
   const { id_producto, url_imagen, nombrecorto, precio, descuento, reviews } =
     product;
 
-  const priceFixed = (precio * 19.92).toFixed(2);
-
+  const priceFixed = precio.toFixed(2);
   const rating = 5;
 
   return (

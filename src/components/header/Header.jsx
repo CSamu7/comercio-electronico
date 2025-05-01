@@ -2,7 +2,6 @@ import styles from "./Header.module.css";
 
 import NavMenu from "./NavMenu";
 import SearchBar from "./SearchBar";
-import ShoppingCart from "./ShoppingCartLogo";
 import LinkButton from "../buttons/LinkButton";
 
 import useWindowSize from "../../hooks/useWindowSize";
@@ -10,6 +9,7 @@ import { useUser } from "../../hooks/useUser";
 import ProfileButton from "./ProfileButton";
 
 import Logo from "../../assets/logo.png";
+import ShoppingCartLogo from "./ShoppingCartLogo";
 
 export default function Header() {
   const [width] = useWindowSize();
@@ -43,7 +43,7 @@ export default function Header() {
 
         {width > 720 && (
           <div className={styles.headerUser}>
-            <ShoppingCart></ShoppingCart>
+            <ShoppingCartLogo user={user}></ShoppingCartLogo>
             {btnProfile}
           </div>
         )}

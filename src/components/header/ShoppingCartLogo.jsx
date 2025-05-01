@@ -2,12 +2,12 @@ import { Link } from "react-router";
 import styles from "./ShoppingCartLogo.module.css";
 import { useShoppingCart } from "../../hooks/useShoppingCart";
 
-export default function ShoppingCartLogo(products = []) {
-  const { shoppingCart } = useShoppingCart();
+export default function ShoppingCartLogo({ user }) {
+  const { shoppingProducts } = useShoppingCart(user?.id);
 
   return (
     <div className={styles.shoppingCart}>
-      <Link to={"/carrito"}>
+      <Link to={"/carrito"} state={{ idUser: user?.id }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="50px"
@@ -19,10 +19,12 @@ export default function ShoppingCartLogo(products = []) {
         </svg>
         <div
           className={`${styles.circleProducts} ${
-            products ? styles.cartWithoutProducts : styles.cartWithProducts
+            shoppingProducts.length <= 0
+              ? styles.cartWithoutProducts
+              : styles.cartWithProducts
           }`}
         >
-          <p className={styles.numberProducts}>0</p>
+          <p className={styles.numberProducts}>{shoppingProducts.length}</p>
         </div>
       </Link>
     </div>

@@ -31,8 +31,8 @@ const useProduct = (products = []) => {
   const filterByPrice = (prices = [], list = products) => {
     return list.filter((item) => {
       return (
-        (item["precio"] * 19.92).toFixed(2) >= prices[0] &&
-        (item["precio"] * 19.92).toFixed(2) <= prices[1]
+        item["precio"].toFixed(2) >= prices[0] &&
+        item["precio"].toFixed(2) <= prices[1]
       );
     });
   };

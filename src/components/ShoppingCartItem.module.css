@@ -33,3 +33,9 @@
   align-items: center;
   justify-content: center;  
 }
+
+.productCounter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
