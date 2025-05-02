@@ -31,3 +31,7 @@
   color: var(--light-blue);
   font-weight: bold;
 }
+
+.btnPayment {
+  width: 240px;
+}

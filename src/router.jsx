@@ -10,6 +10,7 @@ import { getAllProducts, getProduct } from "./services/productService.js";
 import ShoppingCart from "./pages/ShoppingCart.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import Identity from "./pages/Identity.jsx";
+import PaymentSucessful from "./pages/PaymentSuccess.jsx";
 
 const homeRoutes = ["inicio", "/"].map((path) => {
   return (
@@ -37,6 +38,10 @@ const routesJSX = (
         loader={getProduct}
       ></Route>
     </Route>
+    <Route
+      path="payment-success"
+      element={<PaymentSucessful></PaymentSucessful>}
+    ></Route>
   </Route>
 );
 

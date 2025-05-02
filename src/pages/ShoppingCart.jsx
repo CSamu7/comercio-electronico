@@ -2,15 +2,16 @@ import Layout from "../components/Layout";
 import ShoopingCartItem from "../components/ShoppingCartItem";
 import styles from "./ShoppingCart.module.css";
 import DivisorLine from "../components/DivisorLine";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useShoppingCart } from "../hooks/useShoppingCart";
+import ActionButton from "../components/buttons/ActionButton";
+import { getCheckoutURL } from "../services/checkoutService";
 
 export default function ShoppingCart() {
   const { state } = useLocation();
   const { shoppingProducts, updateProductAmount } = useShoppingCart(
     state.idUser
   );
-
   const products = shoppingProducts.map((product) => (
     <ShoopingCartItem
       product={product}
@@ -22,6 +23,12 @@ export default function ShoppingCart() {
     (acc, current) => current.precio * current.cantidad,
     0
   );
+
+  const handleCheckout = async () => {
+    const stripeURL = await getCheckoutURL(shoppingProducts);
+
+    window.location = stripeURL.url;
+  };
 
   return (
     <Layout>
@@ -39,6 +46,13 @@ export default function ShoppingCart() {
           <strong className={styles.subtotal}>
             Subtotal: <span className={styles.subtotalPrice}>${subtotal}</span>
           </strong>
+          <ActionButton
+            variant={"btnWithBg"}
+            className={styles.btnPayment}
+            onClick={handleCheckout}
+          >
+            Proceder al pago
+          </ActionButton>
         </div>
       </main>
     </Layout>
