@@ -10,7 +10,7 @@ import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export default function Product() {
   const [product] = useLoaderData();
-  const { register } = useForm();
+  const { register, watch } = useForm();
   const { addProduct } = useShoppingCart();
 
   const { id_producto, nombre, url_imagen, descripcion, precio, stock } =
@@ -18,7 +18,12 @@ export default function Product() {
 
   const options = Array.from({ length: stock }, (v, k) => k + 1);
 
-  console.log(product);
+  const handleAddProductCart = () => {
+    const amount = parseInt(watch("cantidad"));
+
+    addProduct(id_producto, amount);
+    window.location.reload();
+  };
 
   return (
     <Layout>
@@ -42,10 +47,7 @@ export default function Product() {
               list={options}
             ></Select>
             <div className={styles.buttons}>
-              <ActionButton
-                variant="btnWithBg"
-                onClick={() => addProduct(id_producto)}
-              >
+              <ActionButton variant="btnWithBg" onClick={handleAddProductCart}>
                 Agregar al carrito
               </ActionButton>
               <ActionButton variant="btnWithBg">Comprar ahora</ActionButton>

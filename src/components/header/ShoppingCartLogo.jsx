@@ -3,7 +3,7 @@ import styles from "./ShoppingCartLogo.module.css";
 import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export default function ShoppingCartLogo({ user }) {
-  const { shoppingProducts } = useShoppingCart(user?.id);
+  const { shoppingProducts, getNumberItems } = useShoppingCart(user?.id);
 
   return (
     <div className={styles.shoppingCart}>
@@ -24,7 +24,7 @@ export default function ShoppingCartLogo({ user }) {
               : styles.cartWithProducts
           }`}
         >
-          <p className={styles.numberProducts}>{shoppingProducts.length}</p>
+          <p className={styles.numberProducts}>{getNumberItems()}</p>
         </div>
       </Link>
     </div>

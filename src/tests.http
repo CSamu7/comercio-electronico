@@ -42,17 +42,42 @@ GET http://localhost/backend/public/product/1
 ###
 GET http://localhost/backend/public/shopping-cart/1
 ###
-PUT http://localhost/backend/public/shopping-cart/1
+PUT http://localhost/backend/public/shopping-cart
 Content-Type: application/json
 
 {
   "id_prod": 16,
   "cantidad": 1
 }
-###
-DELETE http://localhost/backend/public/shopping-cart/1
+###Delete a product
+DELETE http://localhost/backend/public/shopping-cart
 Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhbXVlbHBkZzIwMDNAZ21haWwuY29tIiwiaWQiOjF9.6sy4xQeYriENHEES_cZEk7qRiDoHkR0ca4cG_qs4sYQ
 
 {
-  "id_prod": 16,
+  "id_prod": 1,
 }
+
+###Add a product
+POST http://localhost/backend/public/shopping-cart
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhbXVlbHBkZzIwMDNAZ21haWwuY29tIiwiaWQiOjF9.6sy4xQeYriENHEES_cZEk7qRiDoHkR0ca4cG_qs4sYQ
+
+{
+  "id_prod": 12,
+  "cantidad": 2
+}
+###
+POST http://localhost/backend/public/checkout-session
+Content-Type: application/json
+
+[
+  {
+    "nombre":"Sky-Watcher - Telescopio Refractor 120mm EQ3 - Telescopio refractor para principiantes y aficionados - Montura ecuatorial para seguimiento preciso - Lente de alta calidad de 120mm - Ideal para observaci\u00f3n lunar y planetaria.",
+    "id_prod":2,
+    "precio":22451,
+    "url_imagen":"https:\/\/skyshop.mx\/wp-content\/uploads\/2021\/09\/120-skywatcher.jpg\r\nhttps:\/\/espacioceleste.es\/wp-content\/uploads\/2021\/03\/skywatcher_newton_150_750_eq3_manual.png\r\nhttps:\/\/skyshop.mx\/wp-content\/uploads\/2021\/09\/120-skyswatcher-7.jpg\r\n",
+    "stock":5,
+    "cantidad":1
+  }
+]

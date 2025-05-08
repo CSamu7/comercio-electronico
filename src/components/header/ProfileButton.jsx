@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ActionButton from "../buttons/ActionButton";
 import styles from "./ProfileButton.module.css";
 import { useUser } from "../../hooks/useUser";
@@ -7,8 +7,8 @@ import MenuUserItem from "./MenuUserItem";
 
 export default function ProfileButton({ user }) {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
-  const navigate = useNavigate();
   const { logout } = useUser();
+  const navigate = useNavigate();
 
   const { nombre, apeP } = user;
   const fullName = `${nombre} ${apeP} `;

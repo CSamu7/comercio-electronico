@@ -1,12 +1,13 @@
 .item {
   display: flex;
   gap: 50px;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .img {
-  width: 180px;
-  height: 180px;
+  width: 125px;
   object-fit: contain;
 }
 

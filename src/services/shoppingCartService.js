@@ -10,12 +10,17 @@ const getShoppingCart = async (idUser) => {
   return response;
 };
 
-const addShoppingCartService = async (idUser, idProduct) => {
-  const request = await fetch(`${URL_BASE}/${idUser}`, {
+const addShoppingCartService = async (idProduct, cantidad, token) => {
+  const request = await fetch(`${URL_BASE}`, {
     method: "POST",
     body: JSON.stringify({
-      id_product: idProduct,
+      id_prod: idProduct,
+      cantidad,
     }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   });
 
   const response = await request.json();
@@ -40,12 +45,16 @@ const updateProductAmountService = async (idUser, idProduct, amount) => {
   return response;
 };
 
-const removeShoppingCartService = async (idUser, idProduct) => {
-  const request = await fetch(`${URL_BASE}/${idUser}`, {
+const removeShoppingCartService = async (idProduct, token) => {
+  const request = await fetch(`${URL_BASE}`, {
     method: "DELETE",
     body: JSON.stringify({
-      id_product: idProduct,
+      id_prod: idProduct,
     }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   });
 
   const response = await request.json();

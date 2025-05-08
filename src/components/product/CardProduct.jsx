@@ -1,7 +1,7 @@
 import styles from "./CardProduct.module.css";
 import StarRating from "./StarRating";
 import LinkButton from "../buttons/LinkButton";
-import img_not_found from "../../assets/imagen_no_encontrada.png";
+import Image from "../Image";
 
 export default function CardProduct({ product }) {
   const { id_producto, url_imagen, nombrecorto, precio, descuento, reviews } =
@@ -12,13 +12,7 @@ export default function CardProduct({ product }) {
 
   return (
     <div className={styles.cardProduct}>
-      <object
-        data={`${url_imagen}`}
-        className={styles.productImg}
-        type="image/jpeg"
-      >
-        <img src={img_not_found}></img>
-      </object>
+      <Image url={url_imagen} className={styles.productImg}></Image>
       <h3 className={styles.productName}>{nombrecorto}</h3>
       {reviews && (
         <StarRating rating={rating}>

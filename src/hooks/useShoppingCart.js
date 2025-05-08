@@ -5,9 +5,13 @@ import {
   updateProductAmountService,
   removeShoppingCartService,
 } from "../services/shoppingCartService";
+import { useLocalStorage } from "./useLocalStorage";
 
+//Hacer que todo este necesite el token de usuario para poder
 const useShoppingCart = (idUser) => {
   const [shoppingProducts, setShoppingProducts] = useState([]);
+  const { getItem } = useLocalStorage();
+  const token = getItem("token");
 
   useEffect(() => {
     const getData = async () => {
@@ -20,8 +24,14 @@ const useShoppingCart = (idUser) => {
     getData();
   }, [idUser]);
 
-  const addProduct = async (idProduct) => {
-    const response = await addShoppingCartService(idProduct);
+  const getNumberItems = () => {
+    return shoppingProducts?.reduce((acc, prev) => (acc += prev.cantidad), 0);
+  };
+
+  const addProduct = async (idProduct, cantidad) => {
+    if (!token) return;
+
+    const response = await addShoppingCartService(idProduct, cantidad, token);
 
     return response;
   };
@@ -37,7 +47,9 @@ const useShoppingCart = (idUser) => {
   };
 
   const removeProduct = async (idProduct) => {
-    const response = await removeShoppingCartService(idProduct);
+    if (!token) return;
+
+    const response = await removeShoppingCartService(idProduct, token);
 
     return response;
   };
@@ -47,6 +59,7 @@ const useShoppingCart = (idUser) => {
     addProduct,
     updateProductAmount,
     removeProduct,
+    getNumberItems,
   };
 };
 
