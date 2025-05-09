@@ -8,22 +8,15 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../context/ShoppingCarContext";
 
 export default function ShoppingCart() {
-  const { shoppingProducts, updateProductAmount, removeProduct } =
-    useContext(ShoppingCartContext);
+  const { shoppingProducts, getSubtotal } = useContext(ShoppingCartContext);
 
   const products = shoppingProducts.map((product) => (
-    <ShoopingCartItem
-      product={product}
-      updateProduct={updateProductAmount}
-      removeProduct={removeProduct}
-    ></ShoopingCartItem>
+    <ShoopingCartItem product={product}></ShoopingCartItem>
   ));
 
-  const subtotal = shoppingProducts.reduce(
-    (acc, current) => (acc += current.precio * current.cantidad),
-    0
-  );
   const handleCheckout = async () => {
+    if (shoppingProducts.length === 0) return;
+
     const stripeURL = await getCheckoutURL(shoppingProducts);
 
     window.location = stripeURL.url;
@@ -43,7 +36,8 @@ export default function ShoppingCart() {
             )}
           </section>
           <strong className={styles.subtotal}>
-            Subtotal: <span className={styles.subtotalPrice}>${subtotal}</span>
+            Subtotal:{" "}
+            <span className={styles.subtotalPrice}>${getSubtotal()}</span>
           </strong>
           <ActionButton
             variant={"btnWithBg"}

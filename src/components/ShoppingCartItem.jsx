@@ -2,18 +2,19 @@ import ActionButton from "./buttons/ActionButton";
 import DivisorLine from "./DivisorLine";
 import styles from "./ShoppingCartItem.module.css";
 import Image from "./Image";
+import { ShoppingCartContext } from "../context/ShoppingCarContext";
+import { useContext } from "react";
 
-export default function ShoppingCartItem({
-  product,
-  updateProduct,
-  removeProduct,
-}) {
+export default function ShoppingCartItem({ product }) {
   const { id_prod, nombre, url_imagen, precio, cantidad, stock } = product;
+
+  const { updateProductAmount, removeProduct } =
+    useContext(ShoppingCartContext);
 
   const handleUpdateProduct = (newAmount) => {
     if (newAmount < 1 || newAmount > stock) return;
 
-    updateProduct(id_prod, newAmount);
+    updateProductAmount(id_prod, newAmount);
   };
 
   return (

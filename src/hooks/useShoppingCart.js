@@ -24,12 +24,8 @@ const useShoppingCart = (idUser) => {
     getData();
   }, [idUser]);
 
-  const getNumberItems = () => {
-    console.log("-----------------");
-    console.log(shoppingProducts);
-
-    return shoppingProducts.reduce((acc, prev) => (acc += prev.cantidad), 0);
-  };
+  const getNumberItems = () =>
+    shoppingProducts.reduce((acc, prev) => (acc += prev.cantidad), 0);
 
   const getProductAmount = (id) => {
     if (shoppingProducts.length === 0) return 0;
@@ -69,6 +65,12 @@ const useShoppingCart = (idUser) => {
     setShoppingProducts(response);
   };
 
+  const getSubtotal = () =>
+    shoppingProducts.reduce(
+      (acc, current) => (acc += current.precio * current.cantidad),
+      0
+    );
+
   return {
     shoppingProducts,
     addProduct,
@@ -76,6 +78,7 @@ const useShoppingCart = (idUser) => {
     removeProduct,
     getProductAmount,
     getNumberItems,
+    getSubtotal,
   };
 };
 
