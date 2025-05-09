@@ -2,15 +2,15 @@ import Layout from "../components/Layout";
 import ShoopingCartItem from "../components/ShoppingCartItem";
 import styles from "./ShoppingCart.module.css";
 import DivisorLine from "../components/DivisorLine";
-import { useLocation } from "react-router";
-import { useShoppingCart } from "../hooks/useShoppingCart";
 import ActionButton from "../components/buttons/ActionButton";
 import { getCheckoutURL } from "../services/checkoutService";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../context/ShoppingCarContext";
 
 export default function ShoppingCart() {
-  const { state } = useLocation();
   const { shoppingProducts, updateProductAmount, removeProduct } =
-    useShoppingCart(state.idUser);
+    useContext(ShoppingCartContext);
+
   const products = shoppingProducts.map((product) => (
     <ShoopingCartItem
       product={product}

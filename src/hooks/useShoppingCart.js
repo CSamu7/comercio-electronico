@@ -25,7 +25,22 @@ const useShoppingCart = (idUser) => {
   }, [idUser]);
 
   const getNumberItems = () => {
-    return shoppingProducts?.reduce((acc, prev) => (acc += prev.cantidad), 0);
+    console.log("-----------------");
+    console.log(shoppingProducts);
+
+    return shoppingProducts.reduce((acc, prev) => (acc += prev.cantidad), 0);
+  };
+
+  const getProductAmount = (id) => {
+    if (shoppingProducts.length === 0) return 0;
+
+    const product = shoppingProducts?.filter(
+      (product) => product["id_prod"] === id
+    );
+
+    if (product.length === 0) return 0;
+
+    return product[0]["cantidad"];
   };
 
   const addProduct = async (idProduct, cantidad) => {
@@ -33,7 +48,7 @@ const useShoppingCart = (idUser) => {
 
     const response = await addShoppingCartService(idProduct, cantidad, token);
 
-    return response;
+    setShoppingProducts(response);
   };
 
   const updateProductAmount = async (idProduct, amount) => {
@@ -51,7 +66,7 @@ const useShoppingCart = (idUser) => {
 
     const response = await removeShoppingCartService(idProduct, token);
 
-    return response;
+    setShoppingProducts(response);
   };
 
   return {
@@ -59,6 +74,7 @@ const useShoppingCart = (idUser) => {
     addProduct,
     updateProductAmount,
     removeProduct,
+    getProductAmount,
     getNumberItems,
   };
 };

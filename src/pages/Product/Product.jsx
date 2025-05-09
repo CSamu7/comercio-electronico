@@ -6,13 +6,13 @@ import LinkButton from "../../components/buttons/LinkButton";
 
 import { useLoaderData } from "react-router";
 import { useForm } from "react-hook-form";
-import { useShoppingCart } from "../../hooks/useShoppingCart";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../context/ShoppingCarContext";
 
 export default function Product() {
   const [product] = useLoaderData();
   const { register, watch } = useForm();
-  const { addProduct } = useShoppingCart();
-
+  const { addProduct, getProductAmount } = useContext(ShoppingCartContext);
   const { id_producto, nombre, url_imagen, descripcion, precio, stock } =
     product;
 
@@ -21,8 +21,11 @@ export default function Product() {
   const handleAddProductCart = () => {
     const amount = parseInt(watch("cantidad"));
 
+    if (!amount) return;
+
+    if (getProductAmount(id_producto) + amount > stock) return;
+
     addProduct(id_producto, amount);
-    window.location.reload();
   };
 
   return (

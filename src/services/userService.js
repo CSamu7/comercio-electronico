@@ -1,7 +1,5 @@
-const URL_BASE = "http://localhost/backend/public";
-
 const authUser = async (user) => {
-  const request = await fetch(`${URL_BASE}/user/auth`, {
+  const request = await fetch(`${import.meta.env.VITE_USER_URL}/auth`, {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -17,7 +15,7 @@ const authUser = async (user) => {
 };
 
 const getUser = async (token) => {
-  const request = await fetch(`${URL_BASE}/user`, {
+  const request = await fetch(`${import.meta.env.VITE_USER_URL}/`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -29,7 +27,7 @@ const getUser = async (token) => {
 };
 
 const postUser = async (user) => {
-  const request = await fetch(`${URL_BASE}/user`, {
+  const request = await fetch(`${import.meta.env.VITE_USER_URL}/`, {
     headers: {
       "Content-Type": "application/json",
     },

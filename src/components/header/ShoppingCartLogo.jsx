@@ -1,13 +1,14 @@
 import { Link } from "react-router";
 import styles from "./ShoppingCartLogo.module.css";
-import { useShoppingCart } from "../../hooks/useShoppingCart";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../context/ShoppingCarContext";
 
-export default function ShoppingCartLogo({ user }) {
-  const { shoppingProducts, getNumberItems } = useShoppingCart(user?.id);
+export default function ShoppingCartLogo() {
+  const { shoppingProducts, getNumberItems } = useContext(ShoppingCartContext);
 
   return (
     <div className={styles.shoppingCart}>
-      <Link to={"/carrito"} state={{ idUser: user?.id }}>
+      <Link to={"/carrito"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="50px"

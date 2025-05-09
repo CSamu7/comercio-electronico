@@ -1,7 +1,5 @@
-const URL_BASE = "http://localhost/backend/public/checkout-session";
-
 const getCheckoutURL = async (shoppingCart) => {
-  const request = await fetch(URL_BASE, {
+  const request = await fetch(import.meta.env.VITE_CHECKOUT_URL, {
     method: "POST",
     body: JSON.stringify(shoppingCart),
     headers: {

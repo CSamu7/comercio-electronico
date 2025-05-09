@@ -24,23 +24,9 @@ export default function ShoppingCartItem({
           <h3 className={styles.productName}>{nombre}</h3>
           <strong className={styles.productPrice}>${precio}</strong>
           <div className={styles.productCounter}>
-            <button
-              onClick={() => {
-                handleUpdateProduct(cantidad - 1);
-                window.location.reload();
-              }}
-            >
-              -
-            </button>
+            <button onClick={() => handleUpdateProduct(cantidad - 1)}>-</button>
             <p>{cantidad}</p>
-            <button
-              onClick={() => {
-                window.location.reload();
-                handleUpdateProduct(cantidad + 1);
-              }}
-            >
-              +
-            </button>
+            <button onClick={() => handleUpdateProduct(cantidad + 1)}>+</button>
           </div>
         </div>
         <ActionButton
@@ -49,7 +35,6 @@ export default function ShoppingCartItem({
           width="30px"
           onClick={() => {
             removeProduct(id_prod);
-            window.location.reload();
           }}
         >
           X
