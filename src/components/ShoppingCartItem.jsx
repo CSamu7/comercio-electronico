@@ -25,9 +25,19 @@ export default function ShoppingCartItem({ product }) {
           <h3 className={styles.productName}>{nombre}</h3>
           <strong className={styles.productPrice}>${precio}</strong>
           <div className={styles.productCounter}>
-            <button onClick={() => handleUpdateProduct(cantidad - 1)}>-</button>
+            <button
+              onClick={() => handleUpdateProduct(cantidad - 1)}
+              disabled={cantidad === 1}
+            >
+              -
+            </button>
             <p>{cantidad}</p>
-            <button onClick={() => handleUpdateProduct(cantidad + 1)}>+</button>
+            <button
+              onClick={() => handleUpdateProduct(cantidad + 1)}
+              disabled={cantidad === stock}
+            >
+              +
+            </button>
           </div>
         </div>
         <ActionButton

@@ -9,11 +9,14 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { ShoppingCartContext } from "../../context/ShoppingCarContext";
 import MessageError from "../../components/form/MessageError";
+import useSale from "../../hooks/useSale";
 
 export default function Product() {
   const [product] = useLoaderData();
   const { register, watch } = useForm();
   const { addProduct, getProductAmount } = useContext(ShoppingCartContext);
+  const { createSale } = useSale();
+
   const { id_producto, nombre, url_imagen, descripcion, precio, stock } =
     product;
 
@@ -31,11 +34,26 @@ export default function Product() {
 
     if (getProductAmount(id_producto) + amount > stock) {
       setErrorMsg(`El producto solo tiene disponible ${stock} unidades`);
+
       return;
     }
 
     setErrorMsg("");
     addProduct(id_producto, amount);
+  };
+
+  const handleBuyNow = async () => {
+    try {
+      setErrorMsg("");
+      const amount = parseInt(watch("cantidad"));
+      const url = await createSale([
+        { ...product, cantidad: amount, id_prod: id_producto },
+      ]);
+
+      window.location = url;
+    } catch (error) {
+      setErrorMsg(error.message);
+    }
   };
 
   return (
@@ -63,7 +81,9 @@ export default function Product() {
               <ActionButton variant="btnWithBg" onClick={handleAddProductCart}>
                 Agregar al carrito
               </ActionButton>
-              <ActionButton variant="btnWithBg">Comprar ahora</ActionButton>
+              <ActionButton variant="btnWithBg" onClick={handleBuyNow}>
+                Comprar ahora
+              </ActionButton>
             </div>
             {errorMsg && (
               <MessageError variant="withBg">{errorMsg}</MessageError>

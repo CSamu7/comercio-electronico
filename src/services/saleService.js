@@ -1,7 +1,9 @@
-const getCheckoutURL = async (products, token) => {
-  const request = await fetch(import.meta.env.VITE_CHECKOUT_URL, {
+const addSale = async (products, token) => {
+  const request = await fetch(`${import.meta.env.VITE_SALE_URL}`, {
     method: "POST",
-    body: JSON.stringify(products),
+    body: JSON.stringify({
+      products: products,
+    }),
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -13,4 +15,4 @@ const getCheckoutURL = async (products, token) => {
   return response;
 };
 
-export { getCheckoutURL };
+export { addSale };
