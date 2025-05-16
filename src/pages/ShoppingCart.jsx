@@ -4,18 +4,25 @@ import styles from "./ShoppingCart.module.css";
 import DivisorLine from "../components/DivisorLine";
 import ActionButton from "../components/buttons/ActionButton";
 import { getCheckoutURL } from "../services/checkoutService";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShoppingCartContext } from "../context/ShoppingCarContext";
+import MessageError from "../components/form/MessageError";
 
 export default function ShoppingCart() {
   const { shoppingProducts, getSubtotal } = useContext(ShoppingCartContext);
+  const [error, setError] = useState(false);
 
   const products = shoppingProducts.map((product) => (
     <ShoopingCartItem product={product}></ShoopingCartItem>
   ));
 
   const handleCheckout = async () => {
-    if (shoppingProducts.length === 0) return;
+    if (shoppingProducts.length === 0) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
 
     const stripeURL = await getCheckoutURL(shoppingProducts);
 
@@ -46,6 +53,11 @@ export default function ShoppingCart() {
           >
             Proceder al pago
           </ActionButton>
+          {error && (
+            <MessageError variant="withBg">
+              ¡Necesitas tener productos en tu carrito!
+            </MessageError>
+          )}
         </div>
       </div>
     </Layout>

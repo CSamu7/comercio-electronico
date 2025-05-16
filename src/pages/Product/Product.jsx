@@ -6,8 +6,9 @@ import LinkButton from "../../components/buttons/LinkButton";
 
 import { useLoaderData } from "react-router";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShoppingCartContext } from "../../context/ShoppingCarContext";
+import MessageError from "../../components/form/MessageError";
 
 export default function Product() {
   const [product] = useLoaderData();
@@ -16,15 +17,24 @@ export default function Product() {
   const { id_producto, nombre, url_imagen, descripcion, precio, stock } =
     product;
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const options = Array.from({ length: stock }, (v, k) => k + 1);
 
   const handleAddProductCart = () => {
     const amount = parseInt(watch("cantidad"));
 
-    if (!amount) return;
+    if (!amount) {
+      setErrorMsg("No has seleccionado una cantidad");
+      return;
+    }
 
-    if (getProductAmount(id_producto) + amount > stock) return;
+    if (getProductAmount(id_producto) + amount > stock) {
+      setErrorMsg(`El producto solo tiene disponible ${stock} unidades`);
+      return;
+    }
 
+    setErrorMsg("");
     addProduct(id_producto, amount);
   };
 
@@ -55,6 +65,9 @@ export default function Product() {
               </ActionButton>
               <ActionButton variant="btnWithBg">Comprar ahora</ActionButton>
             </div>
+            {errorMsg && (
+              <MessageError variant="withBg">{errorMsg}</MessageError>
+            )}
           </div>
         </div>
       </div>
